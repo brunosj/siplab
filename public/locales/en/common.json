@@ -1,0 +1,105 @@
+{
+  "en": "English",
+  "fr": "French Canadian",
+  "news": "News",
+  "research": "Research",
+  "project": "Project",
+  "people": "People",
+  "course": "Course",
+  "number": "Number",
+  "semesters": "Semesters",
+  "fall": "Fall",
+  "winter": "Winter",
+  "allProjects": "All projects",
+  "allItems": "All items",
+  "publicationTypes": "Publication types",
+  "projectTypes": "Project types",
+  "researchArticles": "Research articles",
+  "fundedProjects": "Funded projects",
+  "collaborativeProjects": "Collaborations",
+  "studentLedProjects": "Student-led projects",
+  "outreach": "Outreach",
+  "projectForFun": "Projects for fun",
+  "inProgress": "in progress",
+  "completed": "completed",
+  "blogPosts": "Blog posts",
+  "name": "Name",
+  "description": "Description",
+  "role": "Role",
+  "focus": "Focus",
+  "authors": "Authors",
+  "year": "Year",
+  "read": "Read",
+  "readMore": "Read more",
+  "by": "by",
+  "publishedOn": "Published on",
+  "writtenBy": "Written by",
+  "getInTouch": "Get in touch!",
+  "contactInformation": "Contact information",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "Email",
+  "phone": "Phone",
+  "subject": "Subject",
+  "submit": "Submit",
+  "send": "Send",
+  "sending": "Sending...",
+  "messageSuccess": "Thank you! Your message has been delivered.",
+  "messageFailure": "Oops! Something went wrong, please try again.",
+  "optional": "Optional",
+  "characters": "characters",
+  "copyright": "All rights reserved",
+  "siteCredit": "Conception and development by ",
+  "404": "Oups! This page cannot be found.",
+
+  "siteDescription": "A research hub based at University of Montreal",
+  "meetTeam": "Meet the team",
+  "labNews": "Lab News",
+  "researchProjects": "Research projects",
+  "latestPublications": "Latest Publications",
+  "allPublications": "All publications",
+  "projectDetails": "Select a project to view details",
+  "loadMore": "Load More",
+  "showAllPublications": "Show All Publications",
+  "bio": "Biography",
+  "contactMe": "Contact me",
+  "level": "Level",
+  "university": "University",
+  "semester": "Semester",
+  "instructor": "Instructor(s)",
+  "menu": [
+    {
+      "name": "Research",
+      "path": "/research"
+    },
+    {
+      "name": "Teaching",
+      "path": "/teaching"
+    },
+    {
+      "name": "Publications",
+      "path": "/publications"
+    },
+
+    {
+      "name": "Lab News",
+      "path": "/news",
+      "lang": "en"
+    },
+
+    {
+      "name": "Team",
+      "path": "/team"
+    },
+    {
+      "name": "Contact",
+      "path": "/contact"
+    }
+  ],
+  "publicationTypesArray": [
+    { "name": "All publications" },
+    { "name": "Scientific articles" },
+    { "name": "Conference proceedings" },
+    { "name": "Reports" }
+  ]
+}

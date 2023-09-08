@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#__next {
+  min-height: 100%;
+}
+
+@layer base {
+  @font-face {
+    font-family: "pri";
+    src: url("./fonts/IBMPlexSans-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "pri";
+    src: url("./fonts/IBMPlexSans-SemiBold.ttf");
+    font-weight: 600;
+    font-style: bold;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "sec";
+    src: url("./fonts/Oswald-VariableFont_wght.ttf");
+    font-display: swap;
+  }
+
+  body {
+    @apply bg-pri font-pri leading-relaxed text-neutral-900 dark:bg-pri-dark dark:text-neutral-200;
+  }
+
+  p {
+    @apply text-sm text-fontPri dark:text-fontPri-dark lg:text-base;
+  }
+
+  span {
+    @apply text-fontPri dark:text-fontPri-dark;
+  }
+
+  h1 {
+    @apply font-sec text-5xl tracking-wider lg:text-7xl;
+  }
+
+  h2 {
+    @apply font-sec text-2xl tracking-wider lg:text-4xl;
+  }
+
+  h3 {
+    @apply font-sec text-xl lg:text-2xl;
+  }
+
+  h4 {
+    @apply font-sec text-lg lg:text-xl;
+  }
+}
+
+.textPri {
+  @apply text-fontPri dark:text-fontPri-dark;
+}
+
+.layout {
+  @apply px-6 lg:px-24;
+}
+
+.padTop12 {
+  @apply pt-6 lg:pt-12;
+}
+
+.sectionPy {
+  @apply py-8 lg:py-16;
+}
+
+.textHover {
+  @apply duration-300  hover:text-gray-600 group-hover:text-gray-600 dark:hover:text-gray-700 dark:group-hover:text-gray-700;
+}
+
+.textUnderline {
+  @apply underline decoration-orange decoration-4 underline-offset-8
+  hover:decoration-8;
+}
+
+.borderLight {
+  @apply border-neutral-500 border-opacity-20 dark:border-gray-500 dark:border-opacity-10;
+}
+
+.markdown p {
+  @apply mb-3 text-sm last:mb-0 lg:text-base;
+}
+
+.markdown h1 {
+  @apply mb-6 text-lg leading-relaxed last:mb-0 lg:text-2xl;
+}
+
+.markdown li {
+  @apply py-1;
+}
+.markdown ul {
+  @apply py-2;
+}
+
+.markdown a {
+  @apply underline underline-offset-4 duration-300  hover:text-gray-600 group-hover:text-gray-600 dark:hover:text-gray-700 dark:group-hover:text-gray-700;
+}
+
+.markdown li {
+  @apply list-inside list-disc text-sm last:mb-0 lg:text-base;
+}
+
+.markdownSmallText p {
+  @apply mb-3 text-sm last:mb-0 lg:text-base;
+}
+
+.markdown h5 {
+  @apply py-3;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: -6rem;
+  visibility: hidden;
+}
+
+.thick-underline span {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 0, 255, 0) 0%,
+    rgba(255, 0, 255, 0) 16%,
+    #559cad 16%,
+    #559cad 41%,
+    rgba(255, 0, 255, 0) 41%
+  );
+}
+
+.thick-underline span {
+  padding: 0 0.5em 0 0.1em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.gradientTextDark {
+  background-color: #559cad;
+  background-image: linear-gradient(45deg, #559cad, #a188a6);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.gradientText {
+  background-color: #335e68;
+  background-image: linear-gradient(45deg, #559cad, #816d85);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.gradientTextDark:hover {
+  background-color: #2f2f2f;
+  background-image: linear-gradient(45deg, #efeff0, #8d8d8e);
+}
+
+.gradientText:hover {
+  background-color: #2f2f2f;
+  background-image: linear-gradient(45deg, #bcbcbd, #8d8d8e);
+}
+
+.gradient-black-gray {
+  background-image: linear-gradient(
+    180deg,
+    #101215 0%,
+    #1b1e23 10%,
+    #101215 100%
+  );
+}
+.gradient-gray-black {
+  background-image: linear-gradient(180deg, #212121, #101215);
+}
+
+.background-gray {
+  background-image: linear-gradient(180deg, #212121, #212121);
+}

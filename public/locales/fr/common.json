@@ -1,0 +1,105 @@
+{
+  "en": "Anglais",
+  "fr": "Français (Canadien)",
+  "news": "Nouvelles",
+  "research": "Recherche",
+  "project": "Projet",
+  "people": "Équipe",
+  "course": "Cours",
+  "number": "Numéro",
+  "semesters": "Sessions",
+  "fall": "Automne",
+  "winter": "Hiver",
+  "allProjects": "Tous les projets",
+  "allItems": "Tous les items",
+  "publicationTypes": "Types de publication",
+  "projectTypes": "Types de projets",
+  "researchArticles": "Articles de recherche",
+  "fundedProjects": "Projets financés",
+  "collaborativeProjects": "Collaborations",
+  "studentLedProjects": "Projets dirigés par des étudiant·e·s",
+  "outreach": "Conférences",
+  "projectForFun": "Projets _just for fun_",
+  "inProgress": "en cours",
+  "completed": "complété",
+  "blogPosts": "Billets de blog",
+  "name": "Nom",
+  "description": "Description",
+  "role": "Rôle",
+  "focus": "Point focal",
+  "authors": "Auteur·e·s",
+  "year": "Année",
+  "read": "Lire",
+  "readMore": "En savoir plus",
+  "by": "par",
+  "publishedOn": "Publié le",
+  "writtenBy": "Écrit par",
+  "getInTouch": "Contactez-nous!",
+  "contactInformation": "Information de contact",
+  "firstName": "Prénom",
+  "lastName": "Nom",
+  "email": "Courriel",
+  "phone": "Téléphone",
+  "subject": "Sujet",
+  "submit": "Soumettre",
+  "send": "Envoyez",
+  "sending": "En envoi...",
+  "messageSuccess": "Merci ! Votre message a été envoyé.",
+  "messageFailure": "Oups ! Quelque chose s'est mal passé, veuillez réessayer.",
+  "optional": "Facultatif",
+  "characters": "caractères",
+  "siteDescription": "Un centre de recherche basé à l'Université de Montréal",
+  "copyright": "Tous droits réservés",
+  "siteCredit": " Conception et développement par ",
+  "404": "Oups ! Cette page ne peut être trouvée.",
+
+  "meetTeam": "Rencontrer l'équipe",
+  "labNews": "Nouvelles du lab",
+  "researchProjects": "Projets de recherche",
+  "latestPublications": "Publications récentes",
+  "allPublications": "Toutes les publications",
+  "projectDetails": "Sélectionnez un projet pour en voir les détails",
+  "loadMore": "Afficher davantage",
+  "showAllPublications": "Afficher toutes les publications",
+  "bio": "Biographie",
+  "contactMe": "Contactez-moi",
+  "level": "Niveau",
+  "university": "Université",
+  "semester": "Session",
+  "instructor": "Instructeur·rice·s",
+  "menu": [
+    {
+      "name": "Recherche",
+      "path": "/research"
+    },
+    {
+      "name": "Enseignement",
+      "path": "/teaching"
+    },
+    {
+      "name": "Publications",
+      "path": "/publications"
+    },
+
+    {
+      "name": "Nouvelles",
+      "path": "/news",
+      "lang": "en"
+    },
+
+    {
+      "name": "Équipe",
+      "path": "/team"
+    },
+    {
+      "name": "Contact",
+      "path": "/contact"
+    }
+  ],
+  "publicationTypesArray": [
+    { "name": "Toutes les publications" },
+    { "name": "Articles scientifiques" },
+    { "name": "Actes de conférences" },
+    { "name": "Rapports" }
+  ]
+}

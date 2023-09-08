@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://siplab.ca
+
+# Sitemaps
+Sitemap: https://siplab.ca/sitemap.xml
