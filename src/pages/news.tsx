@@ -3,8 +3,7 @@ import { PageTypes, NewsTypes } from "src/types/ResponsesInterface";
 import { Seo } from "@/components/SEO";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@/components/Layout";
-import NewsIndex from "@/components/content/newsIndex";
-import NewsListing from "@/components/content/newsListing";
+
 import PageHeaderTitle from "@/components/PageHeaderTitle";
 
 const NewsPage: NextPage<{

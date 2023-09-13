@@ -4,7 +4,6 @@ import { Seo } from "@/components/SEO";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
 import Layout from "@/components/Layout";
-import CoursesContent from "@/components/content/coursesContent";
 import CourseCard from "@/components/courses/CourseCard";
 
 const CoursesPage: NextPage<{
