@@ -32,7 +32,7 @@ const CoursesPage: NextPage<{
         </PageHeaderTitle>
 
         {coursesSorted.length > 0 && (
-          <ul className="sectionPy  bg-sec">
+          <ul className="sectionPy  bg-sec dark:bg-pri-darker">
             {coursesSorted.map((item, i) => (
               <li key={i} className="list-none">
                 <CourseCard item={item} />

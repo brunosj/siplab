@@ -86,7 +86,7 @@ const PublicationsPage: NextPage<{
           description={page.attributes.summary}
         />
         <section>
-          <div className="layout relative grid-cols-3 gap-12 bg-sec dark:bg-sec-dark lg:grid">
+          <div className="layout relative grid-cols-3 gap-12 bg-sec dark:bg-pri-darker lg:grid">
             {/* Sidebar */}
             <div className="sectionPy col-span-1">
               {/* Include the PublicationFilter component */}

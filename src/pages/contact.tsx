@@ -110,11 +110,11 @@ const ContactPage: NextPage<{
         >
           {page.attributes.title}
         </PageHeaderTitle>
-        <section className="layout relative" aria-labelledby="contact-heading">
-          <div
-            className="bg-warm-gray-50 absolute h-1/2 w-full"
-            aria-hidden="true"
-          />
+        <section
+          className="layout relative bg-sec py-12 dark:bg-pri-darker"
+          aria-labelledby="contact-heading"
+        >
+          <div className="absolute h-1/2 w-full" aria-hidden="true" />
           <div className="">
             <div className="relative">
               <h2 id="contact-heading" className="sr-only">
@@ -123,7 +123,7 @@ const ContactPage: NextPage<{
 
               <div className="grid grid-cols-1 lg:grid-cols-3">
                 {/* Contact information */}
-                <div className="relative mr-0 overflow-hidden bg-gradient-to-b lg:mr-12 ">
+                <div className="relative mr-0 space-y-3 overflow-hidden bg-gradient-to-b lg:mr-12">
                   <h3 className="text-lg font-medium">
                     {t("contactInformation")}
                   </h3>
@@ -132,6 +132,7 @@ const ContactPage: NextPage<{
                     École de criminologie | Université de Montréal
                     <br />
                     50 Rue McGill, apt #57 <br />
+                    H3C 1W7 <br />
                     Montreal, Canada
                   </div>
                 </div>

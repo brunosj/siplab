@@ -44,6 +44,7 @@ module.exports = {
           light: "#EAEAE9",
           DEFAULT: "#EAEAE9",
           dark: "#2D2D2D",
+          darker: "#141414",
         },
         sec: {
           light: "#F8F8F8",

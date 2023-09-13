@@ -18,7 +18,8 @@ const TeamCard = ({ item, index }: Props) => {
   const router = useRouter();
   let locale = router.locale ?? "en";
 
-  const cardBg = index % 2 === 0 ? "bg-sec" : "bg-pri";
+  const cardBg =
+    index % 2 === 0 ? "bg-sec dark:bg-pri-darker" : "bg-pri dark:bg-pri-dark";
 
   // Combine and sort publications
   const allPublications: PublicationTypes[] = [
@@ -50,7 +51,7 @@ const TeamCard = ({ item, index }: Props) => {
         <h3>{formatTeamPosition(item.attributes.position, locale)}</h3>
       </div>
 
-      <div className="sectionPy grid-cols-3 lg:grid">
+      <div className="sectionPt grid-cols-3 lg:grid">
         <div>
           {item.attributes.image.data && (
             <div className="relative h-24 w-24 flex-shrink-0 rounded-full duration-300 group-hover:grayscale-0 lg:h-40 lg:w-40 lg:grayscale ">
@@ -66,7 +67,7 @@ const TeamCard = ({ item, index }: Props) => {
           )}
         </div>
 
-        <div className=" col-span-2 space-y-6 py-6 lg:py-0">
+        <div className=" col-span-2 space-y-6 pt-6 lg:pt-0">
           <h3>{t("bio")}</h3>
           <p>{item.attributes.bio}</p>
           <h3>Publications</h3>

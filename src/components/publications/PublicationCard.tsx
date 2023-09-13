@@ -17,7 +17,7 @@ const PublicationCard = ({ item }: Props) => {
   const authors = item.attributes.authors || [];
 
   return (
-    <div className="dark:border- group relative flex h-full list-none flex-col justify-between rounded-t-md border  border-b-4 border-b-orange duration-300 hover:bg-neutral-100 dark:border-pri-dark dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700">
+    <div className="dark:border- group relative flex h-full list-none flex-col justify-between rounded-t-md border  border-b-4 border-b-orange duration-300 hover:bg-neutral-100 dark:border-pri-dark dark:border-b-orange dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700">
       {/* <div className='relative h-32 w-full lg:h-48'>
               {item.attributes.image?.data && (
                 <Image

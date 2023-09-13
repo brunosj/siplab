@@ -1,4 +1,7 @@
 export const formatDate = (date: string, locale: string) => {
+  if (!date || isNaN(Date.parse(date))) {
+    return ""; // Return an empty string for invalid or missing dates
+  }
   const dateObj = new Date(date);
 
   const adjustedLocale =

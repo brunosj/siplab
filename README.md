@@ -1,4 +1,4 @@
-![alt text](https://cms.econcrimelab.com/uploads/Econ_Crime_Logo_Normal_79f0957e6d.jpg?updated_at=2023-01-31T21:52:24.844Z)
+![alt text](https://cms.siplab.ca/uploads/siplab_seo_81ff696b65.jpg)
 
 ## Description
 

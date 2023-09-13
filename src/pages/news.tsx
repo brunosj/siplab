@@ -1,41 +1,30 @@
-import type { NextPage } from 'next';
-import { PageTypes, NewsTypes } from 'src/types/ResponsesInterface';
-import { Seo } from '@/components/SEO';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import PageHeaderTitle from '@/components/layout/pageHeaderTitle';
-import PageContentGrid from '@/components/layout/pageContentGrid';
-import Layout from '@/components/Layout';
-import OutreachContent from '@/components/content/outreachContent';
-import NewsIndex from '@/components/content/newsIndex';
-import NewsListing from '@/components/content/newsListing';
+import type { NextPage } from "next";
+import { PageTypes, NewsTypes } from "src/types/ResponsesInterface";
+import { Seo } from "@/components/SEO";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Layout from "@/components/Layout";
+import NewsIndex from "@/components/content/newsIndex";
+import NewsListing from "@/components/content/newsListing";
+import PageHeaderTitle from "@/components/PageHeaderTitle";
 
 const NewsPage: NextPage<{
   pages: PageTypes[];
   news: NewsTypes[];
 }> = ({ pages, news }) => {
-  const [page] = pages.filter((page) => page.attributes.slug === 'news');
+  const [page] = pages.filter((page) => page.attributes.slug === "news");
   return (
     <Layout>
       <Seo
-        title={`${page.attributes.title} |`}
+        title={page.attributes.title}
         description={page.attributes.summary}
       />
-      <section className=''>
+      <section className="">
         <PageHeaderTitle
-          textColor='text-morange-700 dark:text-morange-500'
-          svgBackground='textureBgTurquoise'
+          title={page.attributes.title}
           description={page.attributes.summary}
         >
           {page.attributes.title}
         </PageHeaderTitle>
-        <PageContentGrid>
-          <div className='layout col-span-4'>
-            <NewsIndex
-              news={news}
-              newsBgColor='dark:bg-mblack-600 bg-mgray-500'
-            />
-          </div>
-        </PageContentGrid>
       </section>
     </Layout>
   );
@@ -59,7 +48,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
     props: {
       pages: pages.data,
       news: news.data,
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
     revalidate: 10,
   };

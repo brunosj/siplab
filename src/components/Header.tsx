@@ -2,32 +2,35 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { Fragment, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Bars4Icon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 import logo from "@/assets/siplab_logo.png";
+import logoDark from "@/assets/siplab_logo_dark.png";
 import ThemeSwitch from "./ui/ThemeSwitch";
+import { useTheme } from "next-themes";
 import Image from "next/image";
-
 import { MenuType } from "@/types/MenuInterface";
 import MobileMenu from "./header/MobileMenu";
 import DesktopMenu from "./header/DesktopMenu";
-import clsx from "clsx";
 
 const Header = () => {
   const router = useRouter();
   let locale = router.locale ?? "en";
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <header className="sticky top-0 z-50 overflow-hidden bg-pri shadow-sm dark:bg-pri-dark ">
       <div className="layout py-2 opacity-100 lg:opacity-90">
         <div className="flex items-center justify-between">
-          <Link className="w-16 pt-2 lg:w-20" href="/" aria-label="logo">
-            <Image src={logo} alt="logo" />
-          </Link>
+          {theme === "dark" ? (
+            <Link className="w-16 pt-2 lg:w-20" href="/" aria-label="logo">
+              <Image src={logoDark} alt="logo" />
+            </Link>
+          ) : (
+            <Link className="w-16 pt-2 lg:w-20" href="/" aria-label="logo">
+              <Image src={logo} alt="logo" />
+            </Link>
+          )}
           <div className="h-auto max-h-full">
             <DesktopMenu />
           </div>

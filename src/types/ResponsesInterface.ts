@@ -6,6 +6,14 @@ export interface Image {
   };
 }
 
+export interface Document {
+  id: number;
+  attributes: {
+    name: string;
+    url: string;
+  };
+}
+
 export interface Authors {
   name: string;
   id: number;
@@ -98,10 +106,12 @@ export interface ProjectTypes {
     content: string;
     slug: string;
     funding: string;
+    image: Image;
     publications: {
-      data: [];
+      data: PublicationTypes[];
     };
     locale: string;
+    documents: { data: Document[] };
   };
   id: number;
 }

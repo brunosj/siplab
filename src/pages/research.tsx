@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { PageTypes, ProjectTypes } from "src/types/ResponsesInterface";
@@ -18,8 +18,28 @@ const ResearchPage: NextPage<{
   const { t } = useTranslation();
 
   const [selectedProject, setSelectedProject] = useState<ProjectTypes | null>(
-    null
+    research.length > 0 ? research[0] : null
   );
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Check screen width and set isDesktop accordingly
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768); // Adjust this breakpoint as needed
+    };
+
+    // Initial check
+    handleResize();
+
+    // Listen for window resize events
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const fundedProjects = research.filter(
     (project) => project.attributes.type === "funded project"
@@ -45,10 +65,15 @@ const ResearchPage: NextPage<{
         />
 
         <section>
-          <div className="layout relative grid grid-cols-3 gap-12 bg-sec pb-12">
+          <div className="layout relative grid-cols-3 gap-12 bg-sec pb-12 dark:bg-pri-darker lg:grid">
             {/* Sidebar */}
-            <div className="col-span-1 -mt-24  ">
-              <div className="sticky top-16 w-3/5 rounded-md border bg-sec shadow-sm">
+            <div className="col-span-1 lg:-mt-24">
+              <div
+                className={`sticky top-16 w-3/5 rounded-md border bg-sec shadow-sm dark:bg-pri-darker ${
+                  isDesktop ? "block" : "hidden"
+                }`}
+              >
+                {" "}
                 <ul>
                   {fundedProjects.length > 1 && (
                     <li className="">
@@ -98,14 +123,33 @@ const ResearchPage: NextPage<{
             </div>
 
             {/* Project List and Details */}
-            <div className="sectionPy col-span-2">
-              {selectedProject ? (
-                <ProjectDetails
-                  project={selectedProject}
-                  onClose={() => setSelectedProject(null)}
-                />
+            <div className="sectionPy col-span-2 space-y-12">
+              {isDesktop ? (
+                selectedProject ? (
+                  <ProjectDetails
+                    project={selectedProject}
+                    onClose={() => setSelectedProject(null)}
+                  />
+                ) : (
+                  <h2 className="">{t("projectDetails")}</h2>
+                )
               ) : (
-                <h2 className="">{t("projectDetails")}</h2>
+                <>
+                  {fundedProjects.map((project) => (
+                    <ProjectDetails
+                      project={project}
+                      onClose={() => setSelectedProject(null)}
+                      key={project.id}
+                    />
+                  ))}
+                  {studentProjects.map((project) => (
+                    <ProjectDetails
+                      project={project}
+                      onClose={() => setSelectedProject(null)}
+                      key={project.id}
+                    />
+                  ))}
+                </>
               )}
             </div>
           </div>
@@ -124,7 +168,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
   const pages = await pagesRes.json();
 
   const researchRes = await fetch(
-    `${process.env.STRAPI_PUBLIC_API_URL}projects?locale=${locale}&populate[publications][populate]`
+    `${process.env.STRAPI_PUBLIC_API_URL}projects?locale=${locale}&populate[publications][populate][0]=authors&populate[documents][populate]&populate[image][populate]`
   );
   const research = await researchRes.json();
 

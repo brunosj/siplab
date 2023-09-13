@@ -55,7 +55,7 @@ const PublicationFilter: React.FC<PublicationFilterProps> = ({
   }, [selectedType, onFilterChange]);
 
   return (
-    <div className="w-full border-t border-pri-dark  text-xs text-fontPri  dark:border-t-pri-dark dark:bg-pri-dark dark:text-fontPri-dark lg:w-3/5 lg:text-sm">
+    <div className="w-full border-t border-pri-dark  text-xs text-fontPri  dark:border-t-pri-dark  dark:text-fontPri-dark lg:w-3/5 lg:text-sm">
       <div className="pt-4">
         <div className="flex items-center justify-between">
           <span className="text-sm font-bold text-pri-dark lg:text-base">

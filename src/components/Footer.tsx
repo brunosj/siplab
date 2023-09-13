@@ -6,11 +6,11 @@ import ThemeSwitch from "./ui/ThemeSwitch";
 import { useTheme } from "next-themes";
 import { MenuType } from "src/types/MenuInterface";
 import logo from "@/assets/siplab_logo.png";
+import logoDark from "@/assets/siplab_logo_dark.png";
 import Image from "next/image";
 
 const Footer = () => {
   const { theme } = useTheme();
-  const router = useRouter();
   const { t } = useTranslation();
   const menu: MenuType = t("menu", { returnObjects: true });
 
@@ -18,9 +18,15 @@ const Footer = () => {
     <footer className="borderLight layout sectionPy bottom-0 w-full border-t">
       <div className="grid-cols-4 lg:grid">
         <div className="col-span-1 flex flex-col">
-          <Link className="w-16 pt-2 lg:w-24" href="/" aria-label="logo">
-            <Image src={logo} alt="logo" />
-          </Link>
+          {theme === "dark" ? (
+            <Link className="w-16 pt-2 lg:w-24" href="/" aria-label="logo">
+              <Image src={logoDark} alt="logo" />
+            </Link>
+          ) : (
+            <Link className="w-16 pt-2 lg:w-24" href="/" aria-label="logo">
+              <Image src={logo} alt="logo" />
+            </Link>
+          )}
 
           <p className="textPri  font-sec text-lg xl:block">
             {t("siteDescription")}
