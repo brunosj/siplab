@@ -8,6 +8,7 @@ import Layout from "@/components/Layout";
 import { Seo } from "@/components/SEO";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
 import ProjectDetails from "@/components/research/ProjectDetails";
+import { useRouter } from "next/router";
 
 const ResearchPage: NextPage<{
   pages: PageTypes[];
@@ -16,6 +17,7 @@ const ResearchPage: NextPage<{
   const [page] = pages.filter((page) => page.attributes.slug === "research");
 
   const { t } = useTranslation();
+  const router = useRouter();
 
   const [selectedProject, setSelectedProject] = useState<ProjectTypes | null>(
     research.length > 0 ? research[0] : null
@@ -23,23 +25,38 @@ const ResearchPage: NextPage<{
 
   const [isDesktop, setIsDesktop] = useState(false);
 
-  // Check screen width and set isDesktop accordingly
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768); // Adjust this breakpoint as needed
+      setIsDesktop(window.innerWidth >= 768);
     };
-
-    // Initial check
     handleResize();
-
-    // Listen for window resize events
     window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    // Check if there is a hash in the URL (e.g., #project-slug)
+    if (isDesktop) {
+      const projectSlug = router.asPath.split("#")[1];
+      if (projectSlug) {
+        // Find the selected project based on the slug
+        const project = research.find(
+          (project) => project.attributes.slug === projectSlug
+        );
+        if (project) {
+          setSelectedProject(project);
+        }
+      }
+    }
+  }, [router.asPath, research, isDesktop]);
+
+  useEffect(() => {
+    if (isDesktop) {
+      window.scrollTo(0, 0);
+    }
+  }, [selectedProject]);
 
   const fundedProjects = research.filter(
     (project) => project.attributes.type === "funded project"

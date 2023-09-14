@@ -49,6 +49,7 @@ export interface NewsTypes {
     locale: string;
     image: Image;
     link: string;
+    slug: string;
   };
   id: number;
 }

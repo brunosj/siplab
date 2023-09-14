@@ -3,18 +3,27 @@ import PublicationCard from "../publications/PublicationCard";
 import ProjectDocumentCard from "./ProjectDocumentCard";
 import Image from "next/image";
 import { CMS_URL } from "src/lib/constants";
+import { useTranslation } from "next-i18next";
 
 const ProjectDetails: React.FC<{
   project: ProjectTypes;
   onClose: () => void;
 }> = ({ project, onClose }) => {
+  const { t } = useTranslation();
+
   return (
-    <article className="space-y-6 lg:space-y-12">
+    <article className="space-y-6 lg:space-y-12" id={project.attributes.slug}>
       {/* <button className="mb-4 text-blue-600 hover:underline" onClick={onClose}>
         Back to Project List
       </button> */}
       <h2 className="">{project.attributes.title}</h2>
-      <p className="">{project.attributes.summary}</p>
+      <div className="space-y-3">
+        <p className="">{project.attributes.summary}</p>
+        <p className="italic">
+          <span>{t("funding")}</span>
+          {project.attributes.funding}
+        </p>
+      </div>
 
       {project.attributes.publications.data?.length >= 1 && (
         <div className="space-y-6">

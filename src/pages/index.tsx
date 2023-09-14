@@ -1,15 +1,15 @@
-import type { NextPage } from 'next';
+import type { NextPage } from "next";
 import {
   NewsTypes,
   ProjectTypes,
   PublicationTypes,
   HomepageTypes,
-} from 'src/types/ResponsesInterface';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Layout from '@/components/Layout';
-import { Seo } from '@/components/SEO';
-import Hero from '@/components/hero/HomeHero';
-import HomePublications from '@/components/publications/HomePublications';
+} from "src/types/ResponsesInterface";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Layout from "@/components/Layout";
+import { Seo } from "@/components/SEO";
+import Hero from "@/components/hero/HomeHero";
+import HomePublications from "@/components/publications/HomePublications";
 
 const Home: NextPage<{
   homepage: HomepageTypes;
@@ -31,7 +31,7 @@ const Home: NextPage<{
         <Hero
           summary={homepage.attributes.info.summary}
           heroText={homepage.attributes.heroText}
-          news={news}
+          news={newsSorted.slice(0, 3)}
           projects={projects}
         />
         <HomePublications items={publications} />
@@ -69,7 +69,7 @@ export const getStaticProps = async ({ locale }: { locale: string }) => {
       news: news.data,
       projects: projects.data,
       publications: publications.data,
-      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      ...(await serverSideTranslations(locale ?? "en", ["common"])),
     },
   };
 };

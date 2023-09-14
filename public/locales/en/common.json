@@ -67,6 +67,7 @@
   "university": "University",
   "semester": "Semester",
   "instructor": "Instructor(s)",
+  "funding": "Funding: ",
   "menu": [
     {
       "name": "Research",
