@@ -38,11 +38,11 @@ const Header = () => {
             <Link
               href={router.asPath}
               locale={router.locale === "en" ? "fr" : "en"}
-              className="textHover text-sm lg:text-base"
+              className=" text-sm lg:text-base"
             >
               <button aria-label="change language">
                 <span
-                  className={`${
+                  className={`textHover ${
                     locale === "en" ? "underline underline-offset-2" : ""
                   }`}
                 >
@@ -50,7 +50,7 @@ const Header = () => {
                 </span>{" "}
                 /{" "}
                 <span
-                  className={`${
+                  className={`textHover ${
                     locale === "fr" ? "underline underline-offset-2" : ""
                   }`}
                 >

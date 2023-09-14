@@ -22,12 +22,12 @@ const HomePublications = ({ items }: Props) => {
   let authors: Authors[] = [];
 
   return (
-    <section className="layout sectionPy bg-sec text-neutral-900 dark:bg-sec-dark">
+    <section className="layout sectionPy bg-sec  dark:bg-pri-darker">
       <h2>{t("latestPublications")}</h2>
       <ul className="padTop12 grid-cols-3 gap-12 lg:grid">
         {latestPublications.map((item, i) => (
           <Link href={item.attributes.link} key={i}>
-            <li className="group relative flex h-full list-none flex-col justify-between rounded-t-md border  border-b-4 border-b-orange duration-100 hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-700">
+            <li className="group relative flex h-full list-none flex-col justify-between rounded-t-md   border-b-4 border-b-orange bg-neutral-100 duration-100 hover:bg-pri dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700">
               {/* <div className='relative h-32 w-full lg:h-48'>
               {item.attributes.image?.data && (
                 <Image

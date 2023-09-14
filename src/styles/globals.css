@@ -82,6 +82,10 @@
   @apply pt-8 lg:pt-16;
 }
 
+.sectionPb {
+  @apply pb-8 lg:pb-16;
+}
+
 .textHover {
   @apply duration-300  hover:text-gray-600 group-hover:text-gray-600 dark:hover:text-gray-700 dark:group-hover:text-gray-700;
 }
@@ -118,7 +122,7 @@
   @apply list-inside list-disc text-sm last:mb-0 lg:text-base;
 }
 
-.markdownSmallText p {
+.markdownTextSm p {
   @apply mb-3 text-sm last:mb-0 lg:text-base;
 }
 

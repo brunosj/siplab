@@ -21,7 +21,7 @@ const Hero = ({ summary, heroText, news, projects }: Props) => {
           <span className="text-neutral-900 underline decoration-orange">
             SIP
           </span>
-          <span className="text-logoGray">LAB</span>
+          <span className="text-logoGray dark:text-logoGray">LAB</span>
         </div>
         <h2>{summary}</h2>
         <div className="w-4/5 pt-3 lg:w-1/4">

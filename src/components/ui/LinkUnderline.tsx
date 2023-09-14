@@ -11,7 +11,7 @@ const LinkUnderline = ({ children, path }: Button) => {
         {isExternal ? (
           <Link
             href={path}
-            className="flex items-center   py-2"
+            className="flex items-center py-2"
             rel="noopener noreferrer"
             target="_blank"
           >

@@ -26,9 +26,9 @@ async function sendEmail(req, res) {
         <div class="img-container" style="display: flex;justify-content: center;align-items: center;border-radius: 5px;overflow: hidden; font-family: 'helvetica', 'ui-sans';">              
               </div>
               <div class="container" style="margin-left: 20px;margin-right: 20px;">
-              <h1 class="text-decoration:underline">siplab.ca - mail</h1>
-              <h3>Name: ${req.body.fullname}</h3>
-              <h3>Email: ✉️${req.body.email}</h3>
+              <p class="text-decoration:underline">siplab.ca - new mail</p>
+              <p>Name: ${req.body.fullname}</p>
+              <p>Email: ${req.body.email}</p>
               <div style="font-size: 16px;">
               <p>Message:</p>
               <p>${req.body.message}</p>

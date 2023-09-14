@@ -3,7 +3,7 @@ import { PageTypes, NewsTypes } from "src/types/ResponsesInterface";
 import { Seo } from "@/components/SEO";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@/components/Layout";
-
+import NewsCard from "@/components/news/NewsCard";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
 
 const NewsPage: NextPage<{
@@ -11,6 +11,11 @@ const NewsPage: NextPage<{
   news: NewsTypes[];
 }> = ({ pages, news }) => {
   const [page] = pages.filter((page) => page.attributes.slug === "news");
+
+  const newsSorted = news.sort((a, b) =>
+    a.attributes.date > b.attributes.date ? -1 : 1
+  );
+
   return (
     <Layout>
       <Seo
@@ -24,6 +29,21 @@ const NewsPage: NextPage<{
         >
           {page.attributes.title}
         </PageHeaderTitle>
+
+        {newsSorted.length >= 1 && (
+          <div className="sectionPy layout bg-sec dark:bg-pri-darker">
+            <div className="flex flex-wrap justify-between gap-4">
+              {newsSorted.map((item, i) => (
+                <li
+                  key={i}
+                  className="h-auto w-full list-none md:w-[47%] lg:w-[32%]"
+                >
+                  <NewsCard item={item} />
+                </li>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
     </Layout>
   );
