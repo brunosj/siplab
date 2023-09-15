@@ -16,6 +16,7 @@ const TeamPage: NextPage<{
     a.attributes.position > b.attributes.position ? 1 : -1
   );
 
+  console.log(page.attributes.title);
   return (
     <Layout>
       <Seo

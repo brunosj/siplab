@@ -54,7 +54,7 @@ const ResearchPage: NextPage<{
 
   useEffect(() => {
     if (isDesktop) {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 300);
     }
   }, [selectedProject]);
 

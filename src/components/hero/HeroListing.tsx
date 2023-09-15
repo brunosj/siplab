@@ -32,7 +32,7 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
     const projectSlug = item.attributes.slug;
     if (contentType === "Projects") {
       router.push(`/research#${projectSlug}`).then(() => {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 150);
       });
     }
   };

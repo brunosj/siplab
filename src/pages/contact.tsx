@@ -114,7 +114,6 @@ const ContactPage: NextPage<{
           className="layout relative bg-sec py-12 dark:bg-pri-darker"
           aria-labelledby="contact-heading"
         >
-          <div className="absolute h-1/2 w-full" aria-hidden="true" />
           <div className="">
             <div className="relative">
               <h2 id="contact-heading" className="sr-only">
