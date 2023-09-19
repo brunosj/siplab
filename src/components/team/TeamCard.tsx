@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { CMS_URL } from "src/lib/constants";
 import Link from "next/link";
-import { formatTeamPosition } from "@/utils/utils";
+import { formatTeamPosition, formatPublicationType } from "@/utils/utils";
 import LinkUnderline from "../ui/LinkUnderline";
 import { useState } from "react";
 import UIButton from "../ui/UIButton";
@@ -28,19 +28,50 @@ const TeamCard = ({ item, index }: Props) => {
       attributes: {
         title: other.title,
         link: other.link,
-        type: "",
+        type: "other",
         date: "",
       },
     })),
   ];
 
+  // Group publications by type
+  const groupedPublications: Record<string, PublicationTypes[]> = {};
+
+  allPublications.forEach((publication) => {
+    const type = formatPublicationType(
+      publication.attributes.type,
+      locale
+    ).toLowerCase(); // Normalize type name
+    if (!groupedPublications[type]) {
+      groupedPublications[type] = [];
+    }
+    groupedPublications[type].push(publication);
+  });
+
   // Sort the combined publications by title A-Z
-  const publicationsSorted = allPublications.sort((a, b) =>
-    a.attributes.title.localeCompare(b.attributes.title)
-  );
+  const publicationsSorted = Object.keys(groupedPublications)
+    .sort((a, b) => {
+      if (a.toLowerCase() === "other" || a.toLowerCase() === "autre") {
+        return 1;
+      }
+      if (b.toLowerCase() === "other" || b.toLowerCase() === "autre") {
+        return -1;
+      }
+      return a.localeCompare(b);
+    })
+    .map((type) => ({
+      type,
+      publications: groupedPublications[type].sort((a, b) =>
+        a.attributes.title.localeCompare(b.attributes.title)
+      ),
+    }));
 
   const [showAllPublications, setShowAllPublications] =
     useState<boolean>(false);
+
+  const totalDisplayedPublications = showAllPublications
+    ? allPublications.length
+    : 5;
 
   return (
     <section className={`layout sectionPy group ${cardBg}`}>
@@ -48,7 +79,7 @@ const TeamCard = ({ item, index }: Props) => {
         <h2 className="duration-300 group-hover:text-orange">
           {item.attributes.name}
         </h2>
-        <h3>{formatTeamPosition(item.attributes.position, locale)}</h3>
+        <h3>{item.attributes.position.slice(4)}</h3>
       </div>
 
       <div className="sectionPt grid-cols-3 lg:grid">
@@ -68,60 +99,55 @@ const TeamCard = ({ item, index }: Props) => {
         </div>
 
         <div className=" col-span-2 space-y-6 pt-6 lg:pt-0">
-          <h3>{t("bio")}</h3>
+          <h3 className="duration-300 group-hover:text-orange">{t("bio")}</h3>
           <p>{item.attributes.bio}</p>
-          <h3>Publications</h3>
-          <div className="text-xs lg:text-sm">
-            {showAllPublications ? (
-              <div className="space-y-2">
-                {publicationsSorted.map((publication, i) => (
-                  <li key={i} className=" list-inside list-disc">
-                    {publication.attributes.link ? (
-                      <Link href={publication.attributes.link} target="_blank">
-                        <span className="duration-300 hover:text-orange">
-                          {" "}
-                          {publication.attributes.title}
-                        </span>
-                      </Link>
-                    ) : (
-                      <>
-                        <span>{publication.attributes.title}</span>
-                      </>
-                    )}
-                  </li>
+
+          {publicationsSorted.length >= 1 && (
+            <>
+              <h3 className="duration-300 group-hover:text-orange">
+                Publications
+              </h3>
+              <div className="text-xs lg:text-sm">
+                {publicationsSorted.map((group, groupIndex) => (
+                  <div key={groupIndex}>
+                    <p className="my-3 font-semibold capitalize">
+                      {group.type}
+                    </p>
+                    <ul className="ml-4 list-inside list-disc space-y-2">
+                      {group.publications
+                        .slice(0, totalDisplayedPublications)
+                        .map((publication, i) => (
+                          <li key={i}>
+                            {publication.attributes.link ? (
+                              <Link
+                                href={publication.attributes.link}
+                                target="_blank"
+                              >
+                                <span className="duration-300 hover:text-orange">
+                                  {publication.attributes.title}
+                                </span>
+                              </Link>
+                            ) : (
+                              <span>{publication.attributes.title}</span>
+                            )}
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
                 ))}
+                {allPublications.length > 5 && !showAllPublications && (
+                  <div className="pt-6">
+                    <UIButton
+                      className="text-primary hover:text-primary-dark"
+                      onClick={() => setShowAllPublications(true)}
+                    >
+                      {t("showAllPublications")}
+                    </UIButton>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="space-y-2">
-                {publicationsSorted.slice(0, 5).map((publication, i) => (
-                  <li key={i} className=" list-inside list-disc">
-                    {publication.attributes.link ? (
-                      <Link href={publication.attributes.link} target="_blank">
-                        <span className="duration-300 hover:text-orange">
-                          {" "}
-                          {publication.attributes.title}
-                        </span>
-                      </Link>
-                    ) : (
-                      <>
-                        <span>{publication.attributes.title}</span>
-                      </>
-                    )}
-                  </li>
-                ))}
-              </div>
-            )}
-            {!showAllPublications && (
-              <div className="pt-6">
-                <UIButton
-                  className="text-primary hover:text-primary-dark"
-                  onClick={() => setShowAllPublications(true)}
-                >
-                  {t("showAllPublications")}
-                </UIButton>
-              </div>
-            )}
-          </div>
+            </>
+          )}
 
           <LinkUnderline path={`mailto:${item.attributes.email}`}>
             {t("contactMe")}

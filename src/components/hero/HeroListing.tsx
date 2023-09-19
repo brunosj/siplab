@@ -2,7 +2,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import { NewspaperIcon, BeakerIcon } from "@heroicons/react/24/solid";
+import {
+  NewspaperIcon,
+  BeakerIcon,
+  MagnifyingGlassCircleIcon,
+} from "@heroicons/react/24/solid";
 import { NewsTypes, ProjectTypes } from "@/types/ResponsesInterface";
 
 interface Props {
@@ -62,7 +66,7 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
                     className="cursor-pointer"
                   >
                     <div className="flex items-center space-x-2 lg:space-x-6">
-                      <BeakerIcon className="h-6 w-6 shrink-0 lg:h-8 lg:w-8" />
+                      <MagnifyingGlassCircleIcon className="h-6 w-6 shrink-0 lg:h-8 lg:w-8" />
 
                       <h4 className="duration-300 group-hover:text-orange">
                         {item.attributes.title}
@@ -73,7 +77,7 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
                 ) : (
                   <Link href={`/research#${item.attributes.slug}`}>
                     <div className="flex items-center space-x-2 lg:space-x-6">
-                      <BeakerIcon className="h-6 w-6 shrink-0 lg:h-8 lg:w-8" />
+                      <MagnifyingGlassCircleIcon className="h-6 w-6 shrink-0 lg:h-8 lg:w-8" />
 
                       <h4 className="duration-300 group-hover:text-orange">
                         {item.attributes.title}

@@ -70,7 +70,6 @@ const PublicationsPage: NextPage<{
   );
 
   useEffect(() => {
-    // Update displayed publications when filteredPublications changes
     setDisplayedPublications(filteredPublications.slice(0, 5));
   }, [filteredPublications]);
 

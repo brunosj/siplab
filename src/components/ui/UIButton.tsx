@@ -10,7 +10,7 @@ const UIButton = ({ children, className, ...rest }: UIButtonProps) => {
   return (
     <button
       className={clsx(
-        "flex whitespace-nowrap rounded-md bg-neutral-900 text-xs font-normal tracking-wide text-pri transition-all duration-300 hover:bg-orange dark:bg-orange hover:dark:bg-pri-dark",
+        "flex whitespace-nowrap rounded-md bg-neutral-900 text-xs font-normal tracking-wide text-pri transition-all duration-300 hover:bg-orange dark:bg-orange hover:dark:bg-sec-dark",
         className
       )}
       {...rest}

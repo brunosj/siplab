@@ -62,7 +62,7 @@ export function formatTeamPosition(type: string, locale: string) {
     switch (type) {
       case "a - lead researcher":
         return "Lead Researcher";
-      case "b - phd student":
+      case "b -  phd student":
         return "PhD Student";
       case "c - masters student":
         return "Masters Student";
@@ -73,7 +73,7 @@ export function formatTeamPosition(type: string, locale: string) {
     switch (type) {
       case "a - lead researcher":
         return "Chercheur·se principal·e";
-      case "b - phd student":
+      case "b -  phd student":
         return "Étudiant·e au doctorat";
       case "c - masters student":
         return "Étudiant·e à la maîtrise";

@@ -10,6 +10,7 @@ import { MdMenu, MdClose } from "react-icons/md";
 const MobileMenu = () => {
   const router = useRouter();
   const { t } = useTranslation();
+  let locale = router.locale ?? "en";
 
   const menu: MenuType = t("menu", { returnObjects: true });
   const menuRef = useRef<HTMLDivElement>(null);
@@ -47,6 +48,29 @@ const MobileMenu = () => {
     <>
       <div className="relative flex items-center text-neutral-900 dark:text-neutral-100 lg:hidden">
         <nav className="ml-3 flex items-center space-x-3 lg:ml-4">
+          <Link
+            href={router.asPath}
+            locale={router.locale === "en" ? "fr" : "en"}
+            className=" text-sm lg:text-base"
+          >
+            <button aria-label="change language">
+              <span
+                className={`textHover ${
+                  locale === "en" ? "underline underline-offset-2" : ""
+                }`}
+              >
+                EN
+              </span>{" "}
+              /{" "}
+              <span
+                className={`textHover ${
+                  locale === "fr" ? "underline underline-offset-2" : ""
+                }`}
+              >
+                FR
+              </span>
+            </button>
+          </Link>
           <ThemeSwitch />
           <button
             type="button"

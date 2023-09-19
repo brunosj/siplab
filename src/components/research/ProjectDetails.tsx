@@ -4,6 +4,7 @@ import ProjectDocumentCard from "./ProjectDocumentCard";
 import Image from "next/image";
 import { CMS_URL } from "src/lib/constants";
 import { useTranslation } from "next-i18next";
+import ReactMarkdown from "react-markdown";
 
 const ProjectDetails: React.FC<{
   project: ProjectTypes;
@@ -18,7 +19,10 @@ const ProjectDetails: React.FC<{
       </button> */}
       <h2 className="">{project.attributes.title}</h2>
       <div className="space-y-3">
-        <p className="">{project.attributes.summary}</p>
+        <div className="markdownTextSm">
+          <ReactMarkdown>{project.attributes.content}</ReactMarkdown>
+        </div>
+        {/* <p className="">{project.attributes.summary}</p> */}
         <p className="italic">
           <span>{t("funding")}</span>
           {project.attributes.funding}
