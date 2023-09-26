@@ -27,8 +27,9 @@ const TeamCard = ({ item, index }: Props) => {
     ...item.attributes.otherPublications.map((other) => ({
       attributes: {
         title: other.title,
+        reference: other.title,
         link: other.link,
-        type: "other",
+        type: other.type,
         date: "",
       },
     })),
@@ -76,9 +77,10 @@ const TeamCard = ({ item, index }: Props) => {
   return (
     <section className={`layout sectionPy group ${cardBg}`}>
       <div className="space-y-1 lg:space-y-3">
-        <h2 className="duration-300 group-hover:text-orange">
-          {item.attributes.name}
-        </h2>
+        <div className="flex items-end space-x-3 duration-300 group-hover:text-orange">
+          <h2 className="leading-none">{item.attributes.name}</h2>
+          <h4 className="font-light">{`(${item.attributes.pronouns})`}</h4>
+        </div>
         <h3>{item.attributes.position.slice(4)}</h3>
       </div>
 
@@ -124,7 +126,7 @@ const TeamCard = ({ item, index }: Props) => {
                                 target="_blank"
                               >
                                 <span className="duration-300 hover:text-orange">
-                                  {publication.attributes.title}
+                                  {publication.attributes.reference}
                                 </span>
                               </Link>
                             ) : (

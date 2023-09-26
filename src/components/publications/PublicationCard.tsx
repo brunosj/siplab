@@ -28,7 +28,7 @@ const PublicationCard = ({ item }: Props) => {
                 />
                 )}
               </div> */}
-      <Link href={item.attributes.link}>
+      <Link href={`publications/${item.attributes.slug}`}>
         <div className="flex-grow text-sm ">
           <div className="flex items-center justify-between text-xs lg:text-sm">
             <span className="rounded-br-md rounded-tl-md bg-orange px-6 py-2 text-white">

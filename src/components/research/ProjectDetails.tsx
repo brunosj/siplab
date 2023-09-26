@@ -43,14 +43,14 @@ const ProjectDetails: React.FC<{
           ))}
         </div>
       )}
-      {project.attributes.documents.data?.length >= 1 && (
+      {project.attributes.documents?.length >= 1 && (
         <div className="space-y-6">
-          {project.attributes.documents.data.length > 1 ? (
+          {project.attributes.documents.length > 1 ? (
             <h3>Documents</h3>
           ) : (
             <h3>Document</h3>
           )}
-          {project.attributes.documents.data.map((document) => (
+          {project.attributes.documents.map((document) => (
             <li key={document.id} className="list-none">
               <ProjectDocumentCard item={document} />
             </li>

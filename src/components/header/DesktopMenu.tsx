@@ -14,7 +14,7 @@ const DesktopMenu = () => {
         {menu.map((item, i) => (
           <div
             key={i}
-            className={`textHover relative flex h-full items-center text-sm ${
+            className={`textHover relative flex h-full items-center text-sm  ${
               router.asPath.startsWith(item.path)
                 ? "after:content after:absolute   after:inset-x-0 after:-bottom-2 after:border-b-[4px] after:border-orange"
                 : ""

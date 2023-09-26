@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="col-span-1 flex flex-col">
           {theme === "dark" ? (
             <Link className="w-16 pt-2 lg:w-24" href="/" aria-label="logo">
-              <Image src={logoDark} alt="logo" />
+              <Image src={logoDark} alt="logo" className="" />
             </Link>
           ) : (
             <Link className="w-16 pt-2 lg:w-24" href="/" aria-label="logo">

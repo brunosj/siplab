@@ -14,6 +14,15 @@ export interface Document {
   };
 }
 
+export interface ProjectDocument {
+  id: number;
+  title: string;
+  type: string;
+  file: {
+    data: Document;
+  };
+}
+
 export interface Authors {
   name: string;
   id: number;
@@ -22,6 +31,7 @@ export interface Authors {
 export interface OtherPublication {
   title: string;
   link: string;
+  type: string;
 }
 
 export interface CourseTypes {
@@ -67,6 +77,7 @@ export interface TeamTypes {
   attributes: {
     name: number;
     position: string;
+    pronouns: string;
     bio: string;
     email: string;
     image: Image;
@@ -87,12 +98,16 @@ export interface PublicationTypes {
     abstract?: string;
     summary?: string;
     type: string;
+    file?: {
+      data: Document;
+    };
     authors?: Authors[];
     project?: ProjectTypes[];
     team?: {};
     image?: Image;
     link: string;
     slug?: string;
+    locale?: string;
     reference?: string;
   };
   id?: number;
@@ -112,7 +127,7 @@ export interface ProjectTypes {
       data: PublicationTypes[];
     };
     locale: string;
-    documents: { data: Document[] };
+    documents: ProjectDocument[];
   };
   id: number;
 }

@@ -87,7 +87,7 @@
 }
 
 .textHover {
-  @apply duration-300  hover:text-gray-600 group-hover:text-gray-600 dark:hover:text-gray-700 dark:group-hover:text-gray-700;
+  @apply duration-300  hover:text-orange group-hover:text-orange dark:hover:text-orange dark:group-hover:text-orange;
 }
 
 .textUnderline {

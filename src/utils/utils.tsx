@@ -57,6 +57,34 @@ export function formatPublicationType(type: string, locale: string) {
   }
 }
 
+export function formatDocumentType(type: string, locale: string) {
+  if (locale === "en") {
+    switch (type) {
+      case "recruitment poster":
+        return "Recruitment Poster";
+      case "survey link":
+        return "Survey Link";
+      case "project website":
+        return "Project Website";
+      default:
+        return "Other";
+    }
+  } else if (locale === "fr") {
+    switch (type) {
+      case "recruitment poster":
+        return "Affiche de recrutement";
+      case "survey link":
+        return "Lien vers sondage";
+      case "project website":
+        return "Site web du project";
+      default:
+        return "Autre";
+    }
+  } else {
+    return "Unknown";
+  }
+}
+
 export function formatTeamPosition(type: string, locale: string) {
   if (locale === "en") {
     switch (type) {
