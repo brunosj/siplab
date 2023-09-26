@@ -19,7 +19,7 @@ const ProjectDetails: React.FC<{
       </button> */}
       <h2 className="">{project.attributes.title}</h2>
       <div className="space-y-3">
-        <div className="markdownTextSm">
+        <div className="markdownTextSm break-words">
           <ReactMarkdown>{project.attributes.content}</ReactMarkdown>
         </div>
         {/* <p className="">{project.attributes.summary}</p> */}
