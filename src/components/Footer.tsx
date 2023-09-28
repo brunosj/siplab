@@ -12,11 +12,14 @@ import Image from "next/image";
 const Footer = () => {
   const { theme } = useTheme();
   const { t } = useTranslation();
+  const router = useRouter();
+  let locale = router.locale ?? "en";
+
   const menu: MenuType = t("menu", { returnObjects: true });
 
   return (
-    <footer className="borderLight layout sectionPy bottom-0 w-full border-t">
-      <div className="grid-cols-4 lg:grid">
+    <footer className="layout borderLight border-t">
+      <div className="sectionPy bottom-0 w-full grid-cols-4 lg:grid ">
         <div className="col-span-1 flex flex-col">
           {theme === "dark" ? (
             <Link className="w-16 pt-2 lg:w-24" href="/" aria-label="logo">
@@ -70,6 +73,20 @@ const Footer = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="mb-6 flex text-xs text-logoGray">
+        <span className="ml-auto">
+          {locale === "en" ? "Web development by: " : "Développement web par: "}
+          <a
+            href="https://www.landozone.net/"
+            className="textHover underline"
+            data-sveltekit-noscroll
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            landozone
+          </a>
+        </span>
       </div>
     </footer>
   );

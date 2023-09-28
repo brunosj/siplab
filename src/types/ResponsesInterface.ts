@@ -21,6 +21,7 @@ export interface ProjectDocument {
   file: {
     data: Document;
   };
+  link: string;
 }
 
 export interface Authors {

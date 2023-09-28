@@ -43,7 +43,7 @@ const ProjectDetails: React.FC<{
           ))}
         </div>
       )}
-      {project.attributes.documents?.length >= 1 && (
+      {project.attributes.documents.length >= 1 && (
         <div className="space-y-6">
           {project.attributes.documents.length > 1 ? (
             <h3>Documents</h3>

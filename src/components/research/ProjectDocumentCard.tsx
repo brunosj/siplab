@@ -18,7 +18,10 @@ const ProjectDocumentCard = ({ item }: Props) => {
 
   return (
     <div className="dark:border- group relative flex h-full list-none flex-col justify-between rounded-t-md border  border-b-4 border-b-orange duration-300 hover:bg-neutral-100 dark:border-pri-dark dark:border-b-orange dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700">
-      <Link href={`${CMS_URL}${item.file.data.attributes.url}`} target="_blank">
+      <Link
+        href={item.link || `${CMS_URL}${item.file.data.attributes.url}`}
+        target="_blank"
+      >
         <div className="flex items-center space-x-6 p-6 ">
           {item.type === "recruitment poster" ? (
             <DocumentArrowDownIcon className="h-6 w-6 shrink-0 duration-300 group-hover:text-orange lg:h-8 lg:w-8" />
