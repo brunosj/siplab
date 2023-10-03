@@ -10,6 +10,7 @@ import PageHeaderTitle from "@/components/PageHeaderTitle";
 import ProjectDetails from "@/components/research/ProjectDetails";
 import { useRouter } from "next/router";
 import { removeAccentsAndSpaces } from "@/utils/utils";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 
 const ResearchPage: NextPage<{
   pages: PageTypes[];
@@ -26,6 +27,19 @@ const ResearchPage: NextPage<{
 
   const [isDesktop, setIsDesktop] = useState(false);
 
+  const [isFacultyProjectsCollapsed, setIsFacultyProjectsCollapsed] =
+    useState(false);
+  const [isStudentProjectsCollapsed, setIsStudentProjectsCollapsed] =
+    useState(false);
+
+  const toggleFacultyProjectsCollapse = () => {
+    setIsFacultyProjectsCollapsed(!isFacultyProjectsCollapsed);
+  };
+
+  const toggleStudentProjectsCollapse = () => {
+    setIsStudentProjectsCollapsed(!isStudentProjectsCollapsed);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
@@ -40,13 +54,13 @@ const ResearchPage: NextPage<{
   useEffect(() => {
     // Check if there is a hash in the URL (e.g., #project-slug)
     if (isDesktop) {
-      const projectSlugSplit = router.asPath.split("#")[1];
-      const projectSlug = removeAccentsAndSpaces(projectSlugSplit);
+      const projectSlug = router.asPath.split("#")[1];
       if (projectSlug) {
         // Find the selected project based on the slug
         const project = research.find(
           (project) =>
-            removeAccentsAndSpaces(project.attributes.slug) === projectSlug
+            removeAccentsAndSpaces(project.attributes.slug) ===
+            removeAccentsAndSpaces(projectSlug)
         );
         if (project) {
           setSelectedProject(project);
@@ -97,14 +111,26 @@ const ResearchPage: NextPage<{
                 <ul>
                   {fundedProjects.length > 1 && (
                     <li className="">
-                      <div className="border-b p-4 font-sec font-bold tracking-wide">
-                        {t("facultyProjects")}
+                      <div
+                        className="cursor-pointer border-b p-4 font-sec font-bold tracking-wide"
+                        onClick={toggleFacultyProjectsCollapse}
+                      >
+                        <div className="flex items-center justify-between">
+                          {t("facultyProjects")}{" "}
+                          {isFacultyProjectsCollapsed ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                          ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                          )}
+                        </div>
                       </div>
-                      <ul>
+                      <ul
+                        className={isFacultyProjectsCollapsed ? "hidden" : ""}
+                      >
                         {fundedProjects.map((project) => (
                           <li
                             key={project.id}
-                            className={`cursor-pointer border-b p-4 text-sm ${
+                            className={`cursor-pointer border-b p-4 text-sm duration-300 hover:bg-orange hover:text-white ${
                               selectedProject?.id === project.id
                                 ? "bg-orange text-white duration-300  "
                                 : ""
@@ -120,15 +146,26 @@ const ResearchPage: NextPage<{
 
                   {studentProjects.length > 1 && (
                     <li>
-                      <div className="border-b p-4 font-sec font-bold tracking-wide">
-                        {" "}
-                        {t("studentProjects")}
+                      <div
+                        className="cursor-pointer border-b p-4 font-sec font-bold tracking-wide"
+                        onClick={toggleStudentProjectsCollapse}
+                      >
+                        <div className="flex items-center justify-between">
+                          {t("studentProjects")}{" "}
+                          {isStudentProjectsCollapsed ? (
+                            <ChevronUpIcon className="h-4 w-4" />
+                          ) : (
+                            <ChevronDownIcon className="h-4 w-4" />
+                          )}
+                        </div>{" "}
                       </div>
-                      <ul>
+                      <ul
+                        className={isStudentProjectsCollapsed ? "hidden" : ""}
+                      >
                         {studentProjects.map((project) => (
                           <li
                             key={project.id}
-                            className={`cursor-pointer border-b p-4 text-sm ${
+                            className={`cursor-pointer border-b p-4 text-sm duration-300 hover:bg-orange hover:text-white ${
                               selectedProject?.id === project.id
                                 ? "bg-orange text-white duration-300  "
                                 : ""
