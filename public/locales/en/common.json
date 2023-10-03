@@ -68,6 +68,8 @@
   "semester": "Semester",
   "instructor": "Instructor(s)",
   "funding": "Funding: ",
+  "facultyProjects": "Faculty Projects",
+  "studentProjects": "Student Projects",
   "menu": [
     {
       "name": "Research",

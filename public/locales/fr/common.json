@@ -68,6 +68,8 @@
   "semester": "Session",
   "instructor": "Instructeur·rice·s",
   "funding": "Financement : ",
+  "facultyProjects": "Projets de la faculté",
+  "studentProjects": "Projets d'étudiant·e·s",
   "menu": [
     {
       "name": "Recherche",

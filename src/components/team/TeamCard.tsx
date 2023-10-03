@@ -42,7 +42,7 @@ const TeamCard = ({ item, index }: Props) => {
     const type = formatPublicationType(
       publication.attributes.type,
       locale
-    ).toLowerCase(); // Normalize type name
+    ).toLowerCase();
     if (!groupedPublications[type]) {
       groupedPublications[type] = [];
     }
@@ -52,10 +52,10 @@ const TeamCard = ({ item, index }: Props) => {
   // Sort the combined publications by title A-Z
   const publicationsSorted = Object.keys(groupedPublications)
     .sort((a, b) => {
-      if (a.toLowerCase() === "other" || a.toLowerCase() === "autre") {
+      if (a.toLowerCase() === "others" || a.toLowerCase() === "autres") {
         return 1;
       }
-      if (b.toLowerCase() === "other" || b.toLowerCase() === "autre") {
+      if (b.toLowerCase() === "others" || b.toLowerCase() === "autres") {
         return -1;
       }
       return a.localeCompare(b);
@@ -78,7 +78,7 @@ const TeamCard = ({ item, index }: Props) => {
     <section className={`layout sectionPy group ${cardBg}`}>
       <div className="space-y-1 lg:space-y-3">
         <div className="flex items-end space-x-3 duration-300 group-hover:text-orange">
-          <h2 className="leading-none">{item.attributes.name}</h2>
+          <h2 className="lg:leading-none">{item.attributes.name}</h2>
           <h4 className="font-light">{`(${item.attributes.pronouns})`}</h4>
         </div>
         <h3>{item.attributes.position.slice(4)}</h3>

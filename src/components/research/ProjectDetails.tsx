@@ -5,6 +5,7 @@ import Image from "next/image";
 import { CMS_URL } from "src/lib/constants";
 import { useTranslation } from "next-i18next";
 import ReactMarkdown from "react-markdown";
+import { removeAccentsAndSpaces } from "@/utils/utils";
 
 const ProjectDetails: React.FC<{
   project: ProjectTypes;
@@ -13,7 +14,10 @@ const ProjectDetails: React.FC<{
   const { t } = useTranslation();
 
   return (
-    <article className="space-y-6 lg:space-y-12" id={project.attributes.slug}>
+    <article
+      className="space-y-6 lg:space-y-12"
+      id={removeAccentsAndSpaces(project.attributes.slug)}
+    >
       {/* <button className="mb-4 text-blue-600 hover:underline" onClick={onClose}>
         Back to Project List
       </button> */}
@@ -23,10 +27,12 @@ const ProjectDetails: React.FC<{
           <ReactMarkdown>{project.attributes.content}</ReactMarkdown>
         </div>
         {/* <p className="">{project.attributes.summary}</p> */}
-        <p className="italic">
-          <span>{t("funding")}</span>
-          {project.attributes.funding}
-        </p>
+        {project.attributes.funding && (
+          <p className="italic">
+            <span>{t("funding")}</span>
+            {project.attributes.funding}
+          </p>
+        )}
       </div>
 
       {project.attributes.publications.data?.length >= 1 && (

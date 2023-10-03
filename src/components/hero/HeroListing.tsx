@@ -8,6 +8,7 @@ import {
   MagnifyingGlassCircleIcon,
 } from "@heroicons/react/24/solid";
 import { NewsTypes, ProjectTypes } from "@/types/ResponsesInterface";
+import { removeAccentsAndSpaces } from "@/utils/utils";
 
 interface Props {
   heading: string;
@@ -33,7 +34,7 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
   }, []);
 
   const handleProjectClick = (item: ProjectTypes | NewsTypes) => {
-    const projectSlug = item.attributes.slug;
+    const projectSlug = removeAccentsAndSpaces(item.attributes.slug);
     if (contentType === "Projects") {
       router.push(`/research#${projectSlug}`).then(() => {
         window.scrollTo(0, 150);
@@ -72,10 +73,14 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
                         {item.attributes.title}
                       </h4>
                     </div>
-                    <p>{item.attributes.summary}</p>
+                    {/* <p>{item.attributes.summary}</p> */}
                   </div>
                 ) : (
-                  <Link href={`/research#${item.attributes.slug}`}>
+                  <Link
+                    href={`/research#${removeAccentsAndSpaces(
+                      item.attributes.slug
+                    )}`}
+                  >
                     <div className="flex items-center space-x-2 lg:space-x-6">
                       <MagnifyingGlassCircleIcon className="h-6 w-6 shrink-0 lg:h-8 lg:w-8" />
 
@@ -83,7 +88,7 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
                         {item.attributes.title}
                       </h4>
                     </div>
-                    <p>{item.attributes.summary}</p>
+                    {/* <p>{item.attributes.summary}</p> */}
                   </Link>
                 )}
               </>

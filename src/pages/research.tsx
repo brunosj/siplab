@@ -9,6 +9,7 @@ import { Seo } from "@/components/SEO";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
 import ProjectDetails from "@/components/research/ProjectDetails";
 import { useRouter } from "next/router";
+import { removeAccentsAndSpaces } from "@/utils/utils";
 
 const ResearchPage: NextPage<{
   pages: PageTypes[];
@@ -39,11 +40,13 @@ const ResearchPage: NextPage<{
   useEffect(() => {
     // Check if there is a hash in the URL (e.g., #project-slug)
     if (isDesktop) {
-      const projectSlug = router.asPath.split("#")[1];
+      const projectSlugSplit = router.asPath.split("#")[1];
+      const projectSlug = removeAccentsAndSpaces(projectSlugSplit);
       if (projectSlug) {
         // Find the selected project based on the slug
         const project = research.find(
-          (project) => project.attributes.slug === projectSlug
+          (project) =>
+            removeAccentsAndSpaces(project.attributes.slug) === projectSlug
         );
         if (project) {
           setSelectedProject(project);
@@ -95,7 +98,7 @@ const ResearchPage: NextPage<{
                   {fundedProjects.length > 1 && (
                     <li className="">
                       <div className="border-b p-4 font-sec font-bold tracking-wide">
-                        Faculty Projects
+                        {t("facultyProjects")}
                       </div>
                       <ul>
                         {fundedProjects.map((project) => (
@@ -117,7 +120,10 @@ const ResearchPage: NextPage<{
 
                   {studentProjects.length > 1 && (
                     <li>
-                      <span className="p-4 font-bold">Student Projects</span>
+                      <div className="border-b p-4 font-sec font-bold tracking-wide">
+                        {" "}
+                        {t("studentProjects")}
+                      </div>
                       <ul>
                         {studentProjects.map((project) => (
                           <li

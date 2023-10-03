@@ -8,8 +8,8 @@ export const formatDate = (date: string, locale: string) => {
     locale === "en" ? "en-CA" : locale === "fr" ? "fr-CA" : locale;
 
   let formattedDate = dateObj.toLocaleDateString(adjustedLocale, {
-    day: "2-digit",
-    month: "long",
+    // day: "2-digit",
+    // month: "long",
     year: "numeric",
   });
 
@@ -33,22 +33,22 @@ export function formatPublicationType(type: string, locale: string) {
   if (locale === "en") {
     switch (type) {
       case "academic articles":
-        return "Academic Article";
+        return "Academic Articles";
       case "conferences":
-        return "Conference";
+        return "Conferences";
       case "reports":
-        return "Report";
+        return "Reports";
       default:
         return "Other";
     }
   } else if (locale === "fr") {
     switch (type) {
       case "academic articles":
-        return "Article académique";
+        return "Articles académique";
       case "conferences":
-        return "Conférence";
+        return "Conférences";
       case "reports":
-        return "Rapport";
+        return "Rapports";
       default:
         return "Autre";
     }
@@ -67,7 +67,7 @@ export function formatDocumentType(type: string, locale: string) {
       case "project website":
         return "Project Website";
       default:
-        return "Other";
+        return "Others";
     }
   } else if (locale === "fr") {
     switch (type) {
@@ -78,7 +78,7 @@ export function formatDocumentType(type: string, locale: string) {
       case "project website":
         return "Site web du project";
       default:
-        return "Autre";
+        return "Autres";
     }
   } else {
     return "Unknown";
@@ -111,4 +111,37 @@ export function formatTeamPosition(type: string, locale: string) {
   } else {
     return "Unknown";
   }
+}
+
+export function removeAccentsAndSpaces(str: string): string {
+  // Remove French accents
+  const accentsMap: { [key: string]: string } = {
+    à: "a",
+    â: "a",
+    ç: "c",
+    é: "e",
+    è: "e",
+    ê: "e",
+    ë: "e",
+    î: "i",
+    ï: "i",
+    ô: "o",
+    ö: "o",
+    û: "u",
+    ü: "u",
+    ÿ: "y",
+  };
+
+  str = str.replace(/[àâçéèêëîïôöûüÿ]/g, (match) => accentsMap[match] || match);
+
+  // Remove spaces and convert to lowercase
+  str = str.replace(/\s+/g, "-").toLowerCase();
+
+  // Remove any remaining non-alphanumeric characters except hyphens
+  str = str.replace(/[^a-z0-9-]/g, "");
+
+  // Remove leading and trailing hyphens
+  str = str.replace(/^-+|-+$/g, "");
+
+  return str;
 }
