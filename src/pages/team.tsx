@@ -49,7 +49,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
   const pages = await pagesRes.json();
 
   const teamRes = await fetch(
-    `${process.env.STRAPI_PUBLIC_API_URL}teams?locale=${locale}&populate=image&populate=projects&populate=publications&populate=otherPublications`
+    `${process.env.STRAPI_PUBLIC_API_URL}teams?locale=${locale}&populate=image&populate=projects&populate=publications&populate=otherPublications&populate=projects`
   );
 
   const team = await teamRes.json();

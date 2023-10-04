@@ -34,21 +34,6 @@ const ProjectDetails: React.FC<{
           </p>
         )}
       </div>
-
-      {project.attributes.publications.data?.length >= 1 && (
-        <div className="space-y-6">
-          {project.attributes.publications.data.length > 1 ? (
-            <h3>Publications</h3>
-          ) : (
-            <h3>Publication</h3>
-          )}
-          {project.attributes.publications.data.map((publication) => (
-            <li key={publication.id} className="list-none">
-              <PublicationCard item={publication} />
-            </li>
-          ))}
-        </div>
-      )}
       {project.attributes.documents.length >= 1 && (
         <div className="space-y-6">
           {project.attributes.documents.length > 1 ? (
@@ -59,6 +44,20 @@ const ProjectDetails: React.FC<{
           {project.attributes.documents.map((document) => (
             <li key={document.id} className="list-none">
               <ProjectDocumentCard item={document} />
+            </li>
+          ))}
+        </div>
+      )}
+      {project.attributes.publications.data?.length >= 1 && (
+        <div className="space-y-6">
+          {project.attributes.publications.data.length > 1 ? (
+            <h3>Publications</h3>
+          ) : (
+            <h3>Publication</h3>
+          )}
+          {project.attributes.publications.data.map((publication) => (
+            <li key={publication.id} className="list-none">
+              <PublicationCard item={publication} />
             </li>
           ))}
         </div>

@@ -85,6 +85,9 @@ export interface TeamTypes {
     publications: {
       data: PublicationTypes[];
     };
+    projects: {
+      data: ProjectTypes[];
+    };
     otherPublications: OtherPublication[];
     locale: string;
     slug: string;

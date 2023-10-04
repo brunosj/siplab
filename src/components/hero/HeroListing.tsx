@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { NewsTypes, ProjectTypes } from "@/types/ResponsesInterface";
 import { removeAccentsAndSpaces } from "@/utils/utils";
+import LinkUnderline from "../ui/LinkUnderline";
 
 interface Props {
   heading: string;
@@ -95,6 +96,11 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
             )}
           </li>
         ))}
+        {contentType === "News" ? (
+          <LinkUnderline path="/news">{t("allItems")}</LinkUnderline>
+        ) : (
+          <LinkUnderline path="/research">{t("allProjects")}</LinkUnderline>
+        )}
       </ul>
     </div>
   );

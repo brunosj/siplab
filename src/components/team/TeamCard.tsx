@@ -8,11 +8,14 @@ import { formatTeamPosition, formatPublicationType } from "@/utils/utils";
 import LinkUnderline from "../ui/LinkUnderline";
 import { useState } from "react";
 import UIButton from "../ui/UIButton";
+import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
+import { removeAccentsAndSpaces } from "@/utils/utils";
 
 interface Props {
   item: TeamTypes;
   index: number;
 }
+
 const TeamCard = ({ item, index }: Props) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -52,10 +55,10 @@ const TeamCard = ({ item, index }: Props) => {
   // Sort the combined publications by title A-Z
   const publicationsSorted = Object.keys(groupedPublications)
     .sort((a, b) => {
-      if (a.toLowerCase() === "others" || a.toLowerCase() === "autres") {
+      if (a.toLowerCase() === "other" || a.toLowerCase() === "autre") {
         return 1;
       }
-      if (b.toLowerCase() === "others" || b.toLowerCase() === "autres") {
+      if (b.toLowerCase() === "other" || b.toLowerCase() === "autre") {
         return -1;
       }
       return a.localeCompare(b);
@@ -104,6 +107,33 @@ const TeamCard = ({ item, index }: Props) => {
           <h3 className="duration-300 group-hover:text-orange">{t("bio")}</h3>
           <p>{item.attributes.bio}</p>
 
+          {item.attributes.projects.data.length >= 1 && (
+            <>
+              <h3 className="duration-300 group-hover:text-orange">
+                {item.attributes.projects.data.length === 1
+                  ? `${t("project")}`
+                  : `${t("project")}s`}
+              </h3>
+              <ul className="space-y-2">
+                {item.attributes.projects.data.map((item, i) => (
+                  <li key={i} className="">
+                    <Link
+                      className="flex items-center space-x-2"
+                      href={`/research#${removeAccentsAndSpaces(
+                        item.attributes.slug
+                      )}`}
+                    >
+                      <MagnifyingGlassCircleIcon className="h-6 w-6 shrink-0 lg:h-8 lg:w-8" />
+
+                      <p className="duration-300 hover:text-orange">
+                        {item.attributes.title}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {publicationsSorted.length >= 1 && (
             <>
               <h3 className="duration-300 group-hover:text-orange">

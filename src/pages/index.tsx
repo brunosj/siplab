@@ -32,7 +32,7 @@ const Home: NextPage<{
           summary={homepage.attributes.info.summary}
           heroText={homepage.attributes.heroText}
           news={newsSorted.slice(0, 3)}
-          projects={projects}
+          projects={projects.slice(0, 3)}
         />
         <HomePublications items={publications} />
       </Layout>

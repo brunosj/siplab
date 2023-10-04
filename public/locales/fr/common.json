@@ -11,7 +11,7 @@
   "fall": "Automne",
   "winter": "Hiver",
   "allProjects": "Tous les projets",
-  "allItems": "Tous les items",
+  "allItems": "Toutes les nouvelles",
   "publicationTypes": "Types de publication",
   "projectTypes": "Types de projets",
   "researchArticles": "Articles de recherche",
@@ -54,6 +54,7 @@
   "404": "Oups ! Cette page ne peut être trouvée.",
 
   "meetTeam": "Rencontrer l'équipe",
+
   "labNews": "Nouvelles du lab",
   "researchProjects": "Projets de recherche",
   "latestPublications": "Publications récentes",

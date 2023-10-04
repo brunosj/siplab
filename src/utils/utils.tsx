@@ -33,22 +33,22 @@ export function formatPublicationType(type: string, locale: string) {
   if (locale === "en") {
     switch (type) {
       case "academic articles":
-        return "Academic Articles";
+        return "Academic Article";
       case "conferences":
-        return "Conferences";
+        return "Conference";
       case "reports":
-        return "Reports";
+        return "Report";
       default:
         return "Other";
     }
   } else if (locale === "fr") {
     switch (type) {
       case "academic articles":
-        return "Articles académique";
+        return "Article académique";
       case "conferences":
-        return "Conférences";
+        return "Conférence";
       case "reports":
-        return "Rapports";
+        return "Rapport";
       default:
         return "Autre";
     }
