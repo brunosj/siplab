@@ -97,9 +97,13 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
           </li>
         ))}
         {contentType === "News" ? (
-          <LinkUnderline path="/news">{t("allItems")}</LinkUnderline>
+          <div className="flex justify-end">
+            <LinkUnderline path="/news">{t("allItems")}</LinkUnderline>
+          </div>
         ) : (
-          <LinkUnderline path="/research">{t("allProjects")}</LinkUnderline>
+          <div className="flex justify-end">
+            <LinkUnderline path="/research">{t("allProjects")}</LinkUnderline>
+          </div>
         )}
       </ul>
     </div>
