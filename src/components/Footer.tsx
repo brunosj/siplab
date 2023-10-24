@@ -38,7 +38,7 @@ const Footer = () => {
         <div className="col-span-3 grid-cols-3 justify-items-end pt-6 text-xs lg:pt-0 lg:text-sm xl:grid">
           <div>
             <h4 className="mb-2 lg:mb-4">Lab</h4>
-            {[0, 1, 2, 4].map((index) => (
+            {[1, 2, 4].map((index) => (
               <Link
                 key={index}
                 href={menu[index].path}
@@ -50,25 +50,25 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="mb-2 lg:mb-4">Outreach</h4>
-            {menu.slice(2, 4).map((item, i) => (
+            {[0, 3].map((index) => (
               <Link
-                key={i}
-                href={item.path}
+                key={index}
+                href={menu[index].path}
                 className="textHover textPri mb-2 block cursor-pointer tracking-wide"
               >
-                {item.name}
+                {menu[index].name}
               </Link>
             ))}
           </div>
           <div>
             <h4 className="mb-2 lg:mb-4">Get in touch</h4>
-            {menu.slice(5).map((item, i) => (
+            {[5].map((index) => (
               <Link
-                key={i}
-                href={item.path}
+                key={index}
+                href={menu[index].path}
                 className="textHover textPri mb-2 block cursor-pointer tracking-wide "
               >
-                {item.name}
+                {menu[index].name}
               </Link>
             ))}
           </div>
