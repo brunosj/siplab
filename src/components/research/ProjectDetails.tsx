@@ -6,11 +6,12 @@ import { CMS_URL } from "src/lib/constants";
 import { useTranslation } from "next-i18next";
 import ReactMarkdown from "react-markdown";
 import { removeAccentsAndSpaces } from "@/utils/utils";
+import { useRouter } from "next/router";
 
 const ProjectDetails: React.FC<{
   project: ProjectTypes;
-  onClose: () => void;
-}> = ({ project, onClose }) => {
+  locale: string;
+}> = ({ project, locale }) => {
   const { t } = useTranslation();
 
   return (
@@ -18,9 +19,6 @@ const ProjectDetails: React.FC<{
       className="space-y-6 lg:space-y-12"
       id={removeAccentsAndSpaces(project.attributes.slug)}
     >
-      {/* <button className="mb-4 text-blue-600 hover:underline" onClick={onClose}>
-        Back to Project List
-      </button> */}
       <h2 className="">{project.attributes.title}</h2>
       <div className="space-y-3">
         <div className="markdownTextSm break-words">

@@ -72,27 +72,24 @@
   "studentProjects": "Student Projects",
   "menu": [
     {
+      "name": "News",
+      "path": "/news"
+    },
+    {
       "name": "Research",
       "path": "/research"
     },
     {
-      "name": "Teaching",
-      "path": "/teaching"
+      "name": "Team",
+      "path": "/team"
     },
     {
       "name": "Publications",
       "path": "/publications"
     },
-
     {
-      "name": "Lab News",
-      "path": "/news",
-      "lang": "en"
-    },
-
-    {
-      "name": "Team",
-      "path": "/team"
+      "name": "Teaching",
+      "path": "/teaching"
     },
     {
       "name": "Contact",

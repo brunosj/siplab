@@ -33,6 +33,7 @@ export interface OtherPublication {
   title: string;
   link: string;
   type: string;
+  date: string;
 }
 
 export interface CourseTypes {

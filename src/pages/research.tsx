@@ -20,12 +20,56 @@ const ResearchPage: NextPage<{
 
   const { t } = useTranslation();
   const router = useRouter();
+  let locale = router.locale ?? "en";
 
+  // Project selection
   const [selectedProject, setSelectedProject] = useState<ProjectTypes | null>(
     research.length > 0 ? research[0] : null
   );
 
-  const [isDesktop, setIsDesktop] = useState(false);
+  const handleProjectClick = (project: ProjectTypes) => {
+    setSelectedProject(project);
+  };
+
+  useEffect(() => {
+    // Create a function to update the selected project based on the current language
+    const updateSelectedProjectForLanguage = () => {
+      // Find the project corresponding to the selectedProject in the current language
+      const projectInCurrentLanguage = research.find(
+        (project) =>
+          project.attributes.slug === selectedProject?.attributes.slug
+      );
+
+      if (projectInCurrentLanguage) {
+        setSelectedProject(projectInCurrentLanguage);
+      }
+    };
+
+    // Listen for changes in the router.locale
+    const localeChangeHandler = () => {
+      // Update selectedProject when the language changes
+      updateSelectedProjectForLanguage();
+    };
+
+    // Add a listener for locale changes
+    router.events.on("routeChangeComplete", localeChangeHandler);
+
+    // Call the updateSelectedProjectForLanguage function initially to set the correct project
+    updateSelectedProjectForLanguage();
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      router.events.off("routeChangeComplete", localeChangeHandler);
+    };
+  }, [router.locale, research, selectedProject]);
+
+  // Projects categories
+  const fundedProjects = research.filter(
+    (project) => project.attributes.type === "funded project"
+  );
+  const studentProjects = research.filter(
+    (project) => project.attributes.type === "student project"
+  );
 
   const [isFacultyProjectsCollapsed, setIsFacultyProjectsCollapsed] =
     useState(false);
@@ -39,6 +83,9 @@ const ResearchPage: NextPage<{
   const toggleStudentProjectsCollapse = () => {
     setIsStudentProjectsCollapsed(!isStudentProjectsCollapsed);
   };
+
+  // Responsiveness
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,17 +121,6 @@ const ResearchPage: NextPage<{
       window.scrollTo(0, 300);
     }
   }, [selectedProject]);
-
-  const fundedProjects = research.filter(
-    (project) => project.attributes.type === "funded project"
-  );
-  const studentProjects = research.filter(
-    (project) => project.attributes.type === "student project"
-  );
-
-  const handleProjectClick = (project: ProjectTypes) => {
-    setSelectedProject(project);
-  };
 
   return (
     <>
@@ -186,10 +222,7 @@ const ResearchPage: NextPage<{
             <div className="sectionPy col-span-2 space-y-12">
               {isDesktop ? (
                 selectedProject ? (
-                  <ProjectDetails
-                    project={selectedProject}
-                    onClose={() => setSelectedProject(null)}
-                  />
+                  <ProjectDetails project={selectedProject} locale={locale} />
                 ) : (
                   <h2 className="">{t("projectDetails")}</h2>
                 )
@@ -198,15 +231,15 @@ const ResearchPage: NextPage<{
                   {fundedProjects.map((project) => (
                     <ProjectDetails
                       project={project}
-                      onClose={() => setSelectedProject(null)}
                       key={project.id}
+                      locale={locale}
                     />
                   ))}
                   {studentProjects.map((project) => (
                     <ProjectDetails
                       project={project}
-                      onClose={() => setSelectedProject(null)}
                       key={project.id}
+                      locale={locale}
                     />
                   ))}
                 </>
@@ -228,7 +261,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
   const pages = await pagesRes.json();
 
   const researchRes = await fetch(
-    `${process.env.STRAPI_PUBLIC_API_URL}projects?locale=${locale}&populate[publications][populate][0]=authors&populate[documents][populate][0]=file&populate[image][populate]`
+    `${process.env.STRAPI_PUBLIC_API_URL}projects?locale=${locale}&populate[publications][populate][0]=authors&populate[documents][populate][0]=file&populate[image][populate]&populate[localizations][populate]`
   );
   const research = await researchRes.json();
 

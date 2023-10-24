@@ -73,27 +73,24 @@
   "studentProjects": "Projets d'étudiant·e·s",
   "menu": [
     {
+      "name": "Nouvelles",
+      "path": "/news"
+    },
+    {
       "name": "Recherche",
       "path": "/research"
     },
     {
-      "name": "Enseignement",
-      "path": "/teaching"
+      "name": "Équipe",
+      "path": "/team"
     },
     {
       "name": "Publications",
       "path": "/publications"
     },
-
     {
-      "name": "Nouvelles",
-      "path": "/news",
-      "lang": "en"
-    },
-
-    {
-      "name": "Équipe",
-      "path": "/team"
+      "name": "Enseignement",
+      "path": "/teaching"
     },
     {
       "name": "Contact",

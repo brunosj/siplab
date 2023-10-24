@@ -151,6 +151,7 @@ export async function getStaticPaths() {
       .filter((item: PublicationTypes) => {
         return (
           item.attributes &&
+          item.attributes.type === "academic articles" &&
           typeof item.attributes.slug === "string" &&
           item.attributes.slug.trim() !== ""
         );
@@ -162,6 +163,8 @@ export async function getStaticPaths() {
 
     if (validPaths.length === 0) {
       console.error("No valid paths found");
+      console.log(validPaths);
+
       return {
         paths: [],
         fallback: "blocking",

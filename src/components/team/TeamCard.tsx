@@ -33,7 +33,7 @@ const TeamCard = ({ item, index }: Props) => {
         reference: other.title,
         link: other.link,
         type: other.type,
-        date: "",
+        date: other.date,
       },
     })),
   ];
@@ -147,6 +147,9 @@ const TeamCard = ({ item, index }: Props) => {
                     </p>
                     <ul className="ml-4 list-inside list-disc space-y-2">
                       {group.publications
+                        .sort((a, b) =>
+                          a.attributes.date > b.attributes.date ? -1 : 1
+                        )
                         .slice(0, totalDisplayedPublications)
                         .map((publication, i) => (
                           <li key={i}>
@@ -160,7 +163,7 @@ const TeamCard = ({ item, index }: Props) => {
                                 </span>
                               </Link>
                             ) : (
-                              <span>{publication.attributes.title}</span>
+                              <span>{publication.attributes.reference}</span>
                             )}
                           </li>
                         ))}
