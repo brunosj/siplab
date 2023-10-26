@@ -43,6 +43,7 @@ export interface CourseTypes {
     content: string;
     locale: string;
     semester: string;
+    semesters: [string];
     university: string;
     level: string;
     instructors: {

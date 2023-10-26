@@ -3,6 +3,7 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import React from "react";
 
 interface Props {
   item: CourseTypes;
@@ -31,40 +32,17 @@ const CourseCard = ({ item }: Props) => {
       graduate: "2e cycle",
     },
   } as { [key: string]: LevelTranslations };
-  const semesterTranslation = {
+
+  const semestersTranslation = {
     en: {
-      "winter 2020": "Winter 2020",
-      "summer 2020": "Summer 2020",
-      "fall 2020": "Fall 2020",
-      "winter 2021": "Winter 2021",
-      "summer 2021": "Summer 2021",
-      "fall 2021": "Fall 2021",
-      "winter 2022": "Winter 2022",
-      "summer 2022": "Summer 2022",
-      "fall 2022": "Fall 2022",
-      "winter 2023": "Winter 2023",
-      "summer 2023": "Summer 2023",
-      "fall 2023": "Fall 2023",
-      "winter 2024": "Winter 2024",
-      "summer 2024": "Summer 2024",
-      "fall 2024": "Fall 2024",
+      Winter: "Winter",
+      Summer: "Summer",
+      Fall: "Fall",
     },
     fr: {
-      "winter 2020": "Hiver 2020",
-      "summer 2020": "Été 2020",
-      "fall 2020": "Automne 2020",
-      "winter 2021": "Hiver 2021",
-      "summer 2021": "Été 2021",
-      "fall 2021": "Automne 2021",
-      "winter 2022": "Hiver 2022",
-      "summer 2022": "Été 2022",
-      "fall 2022": "Automne 2022",
-      "winter 2023": "Hiver 2023",
-      "summer 2023": "Été 2023",
-      "fall 2023": "Automne 2023",
-      "winter 2024": "Hiver 2024",
-      "summer 2024": "Été 2024",
-      "fall 2024": "Automne 2024",
+      Winter: "Hiver",
+      Summer: "Été",
+      Fall: "Automne",
     },
   } as { [key: string]: SemesterTranslations };
 
@@ -80,32 +58,47 @@ const CourseCard = ({ item }: Props) => {
             <ReactMarkdown>{item.attributes.content}</ReactMarkdown>
           </div>
 
-          <div className="w-full text-sm lg:w-1/2">
+          <div className="w-full text-sm ">
             {item.attributes.level && (
-              <div className="grid grid-cols-2 ">
+              <div className="grid grid-cols-3 ">
                 <span>{t("level")}:</span>
                 <span>{levelTranslation[locale][item.attributes.level]}</span>
               </div>
             )}
-
-            {item.attributes.semester && (
-              <div className="grid grid-cols-2 ">
+            {item.attributes.semesters && (
+              <div className="grid grid-cols-3">
                 <span>{t("semester")}:</span>
                 <span>
-                  {semesterTranslation[locale][item.attributes.semester]}
+                  {item.attributes.semesters.map((semesterInfo, i) => {
+                    const parts = semesterInfo.split(" ");
+                    const semester = parts[0];
+                    const year = parts.slice(1).join(" ");
+
+                    const translatedSemester =
+                      semestersTranslation[locale][semester] || semester;
+
+                    return (
+                      <React.Fragment key={i}>
+                        {i > 0 && i < item.attributes.semesters.length
+                          ? " - "
+                          : null}
+                        <span>{`${translatedSemester} ${year}`}</span>
+                      </React.Fragment>
+                    );
+                  })}
                 </span>
               </div>
             )}
 
             {item.attributes.university && (
-              <div className="grid grid-cols-2 ">
+              <div className="grid grid-cols-3 ">
                 <span>{t("university")}:</span>
                 <span>{item.attributes.university}</span>
               </div>
             )}
 
             {item.attributes.instructors.data.length >= 1 && (
-              <div className="grid grid-cols-2 ">
+              <div className="grid grid-cols-3 ">
                 <span>{t("instructor")}:</span>
                 {item.attributes.instructors.data.map((item, i) => (
                   <li key={i}>
