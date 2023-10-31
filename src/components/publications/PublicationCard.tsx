@@ -34,14 +34,16 @@ const PublicationCard = ({ item }: Props) => {
                 )}
               </div> */}
 
-      {item.attributes.type !== "conferences" ? (
+      {item.attributes.slug ? (
         <Link href={`publications/${item.attributes.slug}`}>
           <PublicationCardChild item={item} />
         </Link>
-      ) : (
-        <div>
+      ) : item.attributes.link ? (
+        <a href={item.attributes.link} target="_blank">
           <PublicationCardChild item={item} />
-        </div>
+        </a>
+      ) : (
+        <PublicationCardChild item={item} />
       )}
     </div>
   );

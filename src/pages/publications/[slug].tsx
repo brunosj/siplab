@@ -151,7 +151,6 @@ export async function getStaticPaths() {
       .filter((item: PublicationTypes) => {
         return (
           item.attributes &&
-          item.attributes.type === "academic articles" &&
           typeof item.attributes.slug === "string" &&
           item.attributes.slug.trim() !== ""
         );

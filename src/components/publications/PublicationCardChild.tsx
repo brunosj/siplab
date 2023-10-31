@@ -25,7 +25,7 @@ const PublicationCardChild = ({ item }: Props) => {
       <div className="flex flex-col space-y-6 p-6 ">
         <h4
           className={`${
-            item.attributes.type !== "conferences"
+            item.attributes.slug || item.attributes.link
               ? "duration-300 group-hover:text-orange"
               : " "
           } `}
