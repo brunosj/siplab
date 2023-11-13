@@ -38,6 +38,8 @@ export function formatPublicationType(type: string, locale: string) {
         return "Conference";
       case "reports":
         return "Report";
+      case "under review":
+        return "Under Review";
       default:
         return "Other";
     }
@@ -49,6 +51,8 @@ export function formatPublicationType(type: string, locale: string) {
         return "Conférence";
       case "reports":
         return "Rapport";
+      case "under review":
+        return "En cours de révision";
       default:
         return "Autre";
     }

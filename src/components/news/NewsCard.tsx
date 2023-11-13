@@ -53,7 +53,9 @@ const NewsCard = ({ item }: Props) => {
           </div>
         )}
         {item.attributes.link && (
-          <LinkUnderline path="/publications">{t("readMore")}</LinkUnderline>
+          <LinkUnderline path={item.attributes.link}>
+            {t("readMore")}
+          </LinkUnderline>
         )}
       </div>
     </div>

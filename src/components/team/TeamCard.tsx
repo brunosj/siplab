@@ -140,36 +140,44 @@ const TeamCard = ({ item, index }: Props) => {
                 Publications
               </h3>
               <div className="text-xs lg:text-sm">
-                {publicationsSorted.map((group, groupIndex) => (
-                  <div key={groupIndex}>
-                    <p className="my-3 font-semibold capitalize">
-                      {group.type}
-                    </p>
-                    <ul className="ml-4 list-inside list-disc space-y-2">
-                      {group.publications
-                        .sort((a, b) =>
-                          a.attributes.date > b.attributes.date ? -1 : 1
-                        )
-                        .slice(0, totalDisplayedPublications)
-                        .map((publication, i) => (
-                          <li key={i}>
-                            {publication.attributes.link ? (
-                              <Link
-                                href={publication.attributes.link}
-                                target="_blank"
-                              >
-                                <span className="duration-300 hover:text-orange">
-                                  {publication.attributes.reference}
-                                </span>
-                              </Link>
-                            ) : (
-                              <span>{publication.attributes.reference}</span>
-                            )}
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                ))}
+                {publicationsSorted.map((group, groupIndex) => {
+                  const type =
+                    group.type.charAt(0).toUpperCase() + group.type.slice(1);
+                  return (
+                    <div key={groupIndex}>
+                      <p
+                        className={`my-3 font-semibold ${
+                          locale === "en" ? "capitalize" : ""
+                        }`}
+                      >
+                        {type}
+                      </p>
+                      <ul className="ml-4 list-inside list-disc space-y-2">
+                        {group.publications
+                          .sort((a, b) =>
+                            a.attributes.date > b.attributes.date ? -1 : 1
+                          )
+                          .slice(0, totalDisplayedPublications)
+                          .map((publication, i) => (
+                            <li key={i}>
+                              {publication.attributes.link ? (
+                                <Link
+                                  href={publication.attributes.link}
+                                  target="_blank"
+                                >
+                                  <span className="duration-300 hover:text-orange">
+                                    {publication.attributes.reference}
+                                  </span>
+                                </Link>
+                              ) : (
+                                <span>{publication.attributes.reference}</span>
+                              )}
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  );
+                })}
                 {allPublications.length > 5 && !showAllPublications && (
                   <div className="pt-6">
                     <UIButton
