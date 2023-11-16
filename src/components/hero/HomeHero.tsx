@@ -24,7 +24,7 @@ const Hero = ({ summary, heroText, news, projects }: Props) => {
           <span className="text-logoGray dark:text-logoGray">LAB</span>
         </div>
         <h2>{summary}</h2>
-        <div className="w-4/5 pt-3 lg:w-1/4">
+        <div className="w-4/5 pt-3 lg:w-1/2">
           <p>{heroText}</p>
         </div>
         <div>
