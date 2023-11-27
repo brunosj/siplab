@@ -23,16 +23,22 @@ const PublicationCardChild = ({ item }: Props) => {
         <span className="px-6">{formatDate(item.attributes.date, locale)}</span>
       </div>
       <div className="flex flex-col space-y-6 p-6 ">
-        <h4
-          className={`${
-            item.attributes.slug || item.attributes.link
-              ? "duration-300 group-hover:text-orange"
-              : " "
-          } `}
-        >
-          {item.attributes.title}
-        </h4>
+        <div>
+          <h4
+            className={`${
+              item.attributes.type !== "conferences" &&
+              (item.attributes.slug || item.attributes.link)
+                ? "duration-300 group-hover:text-orange"
+                : " "
+            } `}
+          >
+            {item.attributes.title}
+          </h4>
 
+          {item.attributes.summary && (
+            <p className="mt-2 text-sm italic">{item.attributes.summary}</p>
+          )}
+        </div>
         {item.attributes.abstract && (
           <p className="text-sm">{item.attributes.abstract}</p>
         )}
