@@ -11,7 +11,7 @@ const DesktopMenu = () => {
   return (
     <div className="hidden justify-between lg:flex ">
       <div className="flex gap-6 xl:gap-12">
-        {menu.map((item, i) => (
+        {menu.slice(0, -1).map((item, i) => (
           <div
             key={i}
             className={`textHover relative flex h-full items-center text-sm  ${

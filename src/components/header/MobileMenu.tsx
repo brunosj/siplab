@@ -99,7 +99,7 @@ const MobileMenu = () => {
           </div>
           <div className="flex h-full flex-col justify-center space-y-6 px-12">
             <div className="">
-              {menu.map((item, i) => {
+              {menu.slice(0, -1).map((item, i) => {
                 const isExternal = item.path.slice(0, 4) === "http";
 
                 return (
