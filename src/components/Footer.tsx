@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="mb-2 lg:mb-4">Get in touch</h4>
-            {[5].map((index) => (
+            {[5, 6].map((index) => (
               <Link
                 key={index}
                 href={menu[index].path}

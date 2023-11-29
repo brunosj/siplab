@@ -145,5 +145,6 @@ export interface HomepageTypes {
       summary: string;
     };
     heroText: string;
+    content: string;
   };
 }

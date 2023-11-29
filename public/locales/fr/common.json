@@ -95,6 +95,10 @@
     {
       "name": "Contact",
       "path": "/contact"
+    },
+    {
+      "name": "Confidentialité",
+      "path": "/privacy-policy"
     }
   ],
   "publicationTypesArray": [
