@@ -49,7 +49,7 @@ const Footer = () => {
             ))}
           </div>
           <div>
-            <h4 className="mb-2 lg:mb-4">Outreach</h4>
+            <h4 className="mb-2 lg:mb-4">Comms</h4>
             {[0, 3].map((index) => (
               <Link
                 key={index}
@@ -61,7 +61,7 @@ const Footer = () => {
             ))}
           </div>
           <div>
-            <h4 className="mb-2 lg:mb-4">Get in touch</h4>
+            <h4 className="mb-2 lg:mb-4">Contact</h4>
             {[5, 6].map((index) => (
               <Link
                 key={index}

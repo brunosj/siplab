@@ -130,9 +130,13 @@ const ContactPage: NextPage<{
                     {siteMetadata.title} <br />
                     École de criminologie | Université de Montréal
                     <br />
-                    50 Rue McGill, apt #57 <br />
-                    H3C 1W7 <br />
+                    Pavillon Lionel-Groulx
+                    <br />
+                    3150, rue Jean-Brillant
+                    <br />
                     Montreal, Canada
+                    <br />
+                    H3T 1N8
                   </div>
                 </div>
 
