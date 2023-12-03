@@ -127,16 +127,17 @@ const ContactPage: NextPage<{
                     {t("contactInformation")}
                   </h3>
                   <div className="max-w-3xl ">
-                    {siteMetadata.title} <br />
-                    École de criminologie | Université de Montréal
+                    <span className="font-bold">{siteMetadata.title}</span>
                     <br />
+                    École de criminologie | Université de Montréal
+                    {/* <br />
                     Pavillon Lionel-Groulx
                     <br />
                     3150, rue Jean-Brillant
                     <br />
                     Montreal, Canada
                     <br />
-                    H3T 1N8
+                    H3T 1N8 */}
                   </div>
                 </div>
 
