@@ -72,7 +72,7 @@ const PublicationFilter: React.FC<PublicationFilterProps> = ({
               checked={selectedType.length === types.length}
               onChange={handleSelectAllTypes}
             />
-            All
+            {locale === "en" ? "All" : "Tout"}
           </label>
           {types.map((type, index) => (
             <label key={index} className="">
