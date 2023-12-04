@@ -5,6 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@/components/Layout";
 import NewsCard from "@/components/news/NewsCard";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
+import { Fade } from "react-awesome-reveal";
 
 const NewsPage: NextPage<{
   pages: PageTypes[];
@@ -38,7 +39,9 @@ const NewsPage: NextPage<{
                   key={i}
                   className="h-auto w-full list-none md:w-[47%] lg:w-[32%]"
                 >
-                  <NewsCard item={item} />
+                  <Fade triggerOnce={true} fraction={0.1} cascade damping={0.1}>
+                    <NewsCard item={item} />
+                  </Fade>
                 </li>
               ))}
             </div>

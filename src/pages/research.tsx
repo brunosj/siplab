@@ -11,6 +11,7 @@ import ProjectDetails from "@/components/research/ProjectDetails";
 import { useRouter } from "next/router";
 import { removeAccentsAndSpaces } from "@/utils/utils";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const ResearchPage: NextPage<{
   pages: PageTypes[];
@@ -138,112 +139,126 @@ const ResearchPage: NextPage<{
           <div className="layout relative grid-cols-3 gap-12 bg-sec pb-12 dark:bg-pri-darker lg:grid">
             {/* Sidebar */}
             <div className="col-span-1 lg:-mt-24">
-              <div
-                className={`sticky top-16 w-3/5 rounded-md border bg-sec shadow-sm dark:bg-pri-darker ${
-                  isDesktop ? "block" : "hidden"
-                }`}
+              <Slide
+                direction="left"
+                triggerOnce={true}
+                delay={150}
+                className="sticky top-16 "
               >
-                {" "}
-                <ul>
-                  {fundedProjects.length > 1 && (
-                    <li className="">
-                      <div
-                        className="cursor-pointer border-b p-4 font-sec font-bold tracking-wide"
-                        onClick={toggleFacultyProjectsCollapse}
-                      >
-                        <div className="flex items-center justify-between">
-                          {t("facultyProjects")}{" "}
-                          {isFacultyProjectsCollapsed ? (
-                            <ChevronUpIcon className="h-4 w-4" />
-                          ) : (
-                            <ChevronDownIcon className="h-4 w-4" />
-                          )}
-                        </div>
-                      </div>
-                      <ul
-                        className={isFacultyProjectsCollapsed ? "hidden" : ""}
-                      >
-                        {fundedProjects.map((project) => (
-                          <li
-                            key={project.id}
-                            className={`cursor-pointer border-b p-4 text-sm duration-300 hover:bg-orange hover:text-white ${
-                              selectedProject?.id === project.id
-                                ? "bg-orange text-white duration-300  "
-                                : ""
-                            }`}
-                            onClick={() => handleProjectClick(project)}
+                <Fade triggerOnce={true}>
+                  <div
+                    className={`w-3/5 rounded-md border bg-sec shadow-sm dark:bg-pri-darker ${
+                      isDesktop ? "block" : "hidden"
+                    }`}
+                  >
+                    {" "}
+                    <ul>
+                      {fundedProjects.length > 1 && (
+                        <li className="">
+                          <div
+                            className="cursor-pointer border-b p-4 font-sec font-bold tracking-wide"
+                            onClick={toggleFacultyProjectsCollapse}
                           >
-                            {project.attributes.title}
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  )}
+                            <div className="flex items-center justify-between">
+                              {t("facultyProjects")}{" "}
+                              {isFacultyProjectsCollapsed ? (
+                                <ChevronUpIcon className="h-4 w-4" />
+                              ) : (
+                                <ChevronDownIcon className="h-4 w-4" />
+                              )}
+                            </div>
+                          </div>
+                          <ul
+                            className={
+                              isFacultyProjectsCollapsed ? "hidden" : ""
+                            }
+                          >
+                            {fundedProjects.map((project) => (
+                              <li
+                                key={project.id}
+                                className={`cursor-pointer border-b p-4 text-sm duration-300 hover:bg-orange hover:text-white ${
+                                  selectedProject?.id === project.id
+                                    ? "bg-orange text-white duration-300  "
+                                    : ""
+                                }`}
+                                onClick={() => handleProjectClick(project)}
+                              >
+                                {project.attributes.title}
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      )}
 
-                  {studentProjects.length > 1 && (
-                    <li>
-                      <div
-                        className="cursor-pointer border-b p-4 font-sec font-bold tracking-wide"
-                        onClick={toggleStudentProjectsCollapse}
-                      >
-                        <div className="flex items-center justify-between">
-                          {t("studentProjects")}{" "}
-                          {isStudentProjectsCollapsed ? (
-                            <ChevronUpIcon className="h-4 w-4" />
-                          ) : (
-                            <ChevronDownIcon className="h-4 w-4" />
-                          )}
-                        </div>{" "}
-                      </div>
-                      <ul
-                        className={isStudentProjectsCollapsed ? "hidden" : ""}
-                      >
-                        {studentProjects.map((project) => (
-                          <li
-                            key={project.id}
-                            className={`cursor-pointer border-b p-4 text-sm duration-300 hover:bg-orange hover:text-white ${
-                              selectedProject?.id === project.id
-                                ? "bg-orange text-white duration-300  "
-                                : ""
-                            }`}
-                            onClick={() => handleProjectClick(project)}
+                      {studentProjects.length > 1 && (
+                        <li>
+                          <div
+                            className="cursor-pointer border-b p-4 font-sec font-bold tracking-wide"
+                            onClick={toggleStudentProjectsCollapse}
                           >
-                            {project.attributes.title}
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
-                  )}
-                </ul>
-              </div>
+                            <div className="flex items-center justify-between">
+                              {t("studentProjects")}{" "}
+                              {isStudentProjectsCollapsed ? (
+                                <ChevronUpIcon className="h-4 w-4" />
+                              ) : (
+                                <ChevronDownIcon className="h-4 w-4" />
+                              )}
+                            </div>{" "}
+                          </div>
+                          <ul
+                            className={
+                              isStudentProjectsCollapsed ? "hidden" : ""
+                            }
+                          >
+                            {studentProjects.map((project) => (
+                              <li
+                                key={project.id}
+                                className={`cursor-pointer border-b p-4 text-sm duration-300 hover:bg-orange hover:text-white ${
+                                  selectedProject?.id === project.id
+                                    ? "bg-orange text-white duration-300  "
+                                    : ""
+                                }`}
+                                onClick={() => handleProjectClick(project)}
+                              >
+                                {project.attributes.title}
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                </Fade>
+              </Slide>
             </div>
-
             {/* Project List and Details */}
             <div className="sectionPy col-span-2 space-y-12">
-              {isDesktop ? (
-                selectedProject ? (
-                  <ProjectDetails project={selectedProject} locale={locale} />
+              <Fade triggerOnce={true} delay={150}>
+                {isDesktop ? (
+                  selectedProject ? (
+                    <ProjectDetails project={selectedProject} locale={locale} />
+                  ) : (
+                    <h2 className="">{t("projectDetails")}</h2>
+                  )
                 ) : (
-                  <h2 className="">{t("projectDetails")}</h2>
-                )
-              ) : (
-                <>
-                  {fundedProjects.map((project) => (
-                    <ProjectDetails
-                      project={project}
-                      key={project.id}
-                      locale={locale}
-                    />
-                  ))}
-                  {studentProjects.map((project) => (
-                    <ProjectDetails
-                      project={project}
-                      key={project.id}
-                      locale={locale}
-                    />
-                  ))}
-                </>
-              )}
+                  <>
+                    {fundedProjects.map((project) => (
+                      <ProjectDetails
+                        project={project}
+                        key={project.id}
+                        locale={locale}
+                      />
+                    ))}
+                    {studentProjects.map((project) => (
+                      <ProjectDetails
+                        project={project}
+                        key={project.id}
+                        locale={locale}
+                      />
+                    ))}
+                  </>
+                )}
+              </Fade>
             </div>
           </div>
         </section>

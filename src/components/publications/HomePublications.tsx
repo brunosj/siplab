@@ -5,6 +5,7 @@ import { useTranslation } from "next-i18next";
 import { formatDate, formatPublicationType } from "@/utils/utils";
 import { useRouter } from "next/router";
 import LinkUnderline from "../ui/LinkUnderline";
+import { Fade, Slide } from "react-awesome-reveal";
 
 interface Props {
   items: PublicationTypes[];
@@ -23,12 +24,13 @@ const HomePublications = ({ items }: Props) => {
 
   return (
     <section className="layout sectionPy bg-sec  dark:bg-pri-darker">
-      <h2>{t("latestPublications")}</h2>
-      <ul className="padTop12 grid-cols-3 gap-12 lg:grid ">
-        {latestPublications.map((item, i) => (
-          <Link href={`publications/${item.attributes.slug}`} key={i}>
-            <li className="group relative mb-6 flex h-full list-none flex-col justify-between rounded-t-md border-b-4 border-b-orange bg-neutral-100 duration-300 hover:bg-pri dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700 lg:mb-0">
-              {/* <div className='relative h-32 w-full lg:h-48'>
+      <Fade triggerOnce={true} fraction={0.5} cascade damping={0.1}>
+        <h2>{t("latestPublications")}</h2>
+        <ul className="padTop12 grid-cols-3 gap-12 lg:grid ">
+          {latestPublications.map((item, i) => (
+            <Link href={`publications/${item.attributes.slug}`} key={i}>
+              <li className="group relative mb-6 flex h-full list-none flex-col justify-between rounded-t-md border-b-4 border-b-orange bg-neutral-100 duration-300 hover:bg-pri dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700 lg:mb-0">
+                {/* <div className='relative h-32 w-full lg:h-48'>
               {item.attributes.image?.data && (
                 <Image
                   src={item.attributes.image.data.attributes.url}
@@ -38,11 +40,11 @@ const HomePublications = ({ items }: Props) => {
                 />
               )}
             </div> */}
-              <div className="flex-grow p-4 text-sm ">
-                <h4 className="duration-300 group-hover:text-orange">
-                  {item.attributes.title}
-                </h4>
-                {/* <div className="flex flex-col space-y-3 pt-6">
+                <div className="flex-grow p-4 text-sm ">
+                  <h4 className="duration-300 group-hover:text-orange">
+                    {item.attributes.title}
+                  </h4>
+                  {/* <div className="flex flex-col space-y-3 pt-6">
                   <p className="text-sm">{item.attributes.abstract}</p>
 
                   <div>
@@ -54,23 +56,24 @@ const HomePublications = ({ items }: Props) => {
                     ))}
                   </div>
                 </div> */}
-              </div>
-              <div className="mt-auto flex justify-between p-4 text-sm">
-                <span>
-                  {formatPublicationType(item.attributes.type, locale)}
-                </span>
+                </div>
+                <div className="mt-auto flex justify-between p-4 text-sm">
+                  <span>
+                    {formatPublicationType(item.attributes.type, locale)}
+                  </span>
 
-                <span>{formatDate(item.attributes.date, locale)}</span>
-              </div>
-            </li>
-          </Link>
-        ))}
-      </ul>
-      <div className="padTop12 flex justify-end">
-        <LinkUnderline path="/publications">
-          {t("allPublications")}
-        </LinkUnderline>
-      </div>
+                  <span>{formatDate(item.attributes.date, locale)}</span>
+                </div>
+              </li>
+            </Link>
+          ))}
+        </ul>
+        <div className="padTop12 flex justify-end">
+          <LinkUnderline path="/publications">
+            {t("allPublications")}
+          </LinkUnderline>
+        </div>
+      </Fade>
     </section>
   );
 };

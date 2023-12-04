@@ -5,6 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
 import Layout from "@/components/Layout";
 import CourseCard from "@/components/courses/CourseCard";
+import { Fade } from "react-awesome-reveal";
 
 const CoursesPage: NextPage<{
   pages: PageTypes[];
@@ -34,7 +35,9 @@ const CoursesPage: NextPage<{
           <ul className="sectionPy  bg-sec dark:bg-pri-darker">
             {coursesSorted.map((item, i) => (
               <li key={i} className="list-none">
-                <CourseCard item={item} />
+                <Fade triggerOnce={true} fraction={0.1} cascade damping={0.5}>
+                  <CourseCard item={item} />
+                </Fade>
               </li>
             ))}
           </ul>

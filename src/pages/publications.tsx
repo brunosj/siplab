@@ -10,6 +10,7 @@ import PageHeaderTitle from "@/components/PageHeaderTitle";
 import PublicationCard from "@/components/publications/PublicationCard";
 import { useRouter } from "next/router";
 import UIButton from "@/components/ui/UIButton";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const PublicationsPage: NextPage<{
   pages: PageTypes[];
@@ -88,21 +89,36 @@ const PublicationsPage: NextPage<{
           <div className="layout relative grid-cols-3 gap-12 bg-sec dark:bg-pri-darker lg:grid">
             {/* Sidebar */}
             <div className="sectionPy col-span-1">
-              {/* Include the PublicationFilter component */}
-              <PublicationFilter
-                publications={publicationsSorted}
-                onFilterChange={handleFilterChange}
-                locale={locale}
-              />
+              <Slide
+                direction="left"
+                triggerOnce={true}
+                delay={150}
+                className="sticky top-16 "
+              >
+                <Fade triggerOnce={true}>
+                  <PublicationFilter
+                    publications={publicationsSorted}
+                    onFilterChange={handleFilterChange}
+                    locale={locale}
+                  />
+                </Fade>
+              </Slide>
             </div>
 
             {/* Project List and Details */}
             <div className="sectionPy col-span-2 space-y-6 lg:space-y-12">
               {displayedPublications.length > 0 ? (
                 // Display displayed publications here
-                displayedPublications.map((publication) => (
-                  <li key={publication.id} className="list-none">
-                    <PublicationCard item={publication} />
+                displayedPublications.map((publication, i) => (
+                  <li key={i} className="list-none">
+                    <Fade
+                      triggerOnce={true}
+                      delay={(i = 0 ? 300 : 0)}
+                      cascade
+                      damping={0.1}
+                    >
+                      <PublicationCard item={publication} />
+                    </Fade>
                   </li>
                 ))
               ) : (

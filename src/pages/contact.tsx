@@ -11,12 +11,15 @@ import { useState } from "react";
 import { i18n } from "next-i18next";
 import { FormEvent } from "react";
 import UIButton from "@/components/ui/UIButton";
+import { useRouter } from "next/router";
 
 const ContactPage: NextPage<{
   pages: PageTypes[];
 }> = ({ pages }) => {
   const [page] = pages.filter((page) => page.attributes.slug === "contact");
   const { t } = useTranslation();
+  const router = useRouter();
+  let locale = router.locale ?? "en";
 
   // States for contact form fields
   const [fullname, setFullname] = useState("");
@@ -28,7 +31,9 @@ const ContactPage: NextPage<{
   const [errors, setErrors] = useState({});
 
   //   Setting button text on form submission
-  const [buttonText, setButtonText] = useState(i18n!.t("send"));
+  const [buttonText, setButtonText] = useState(
+    locale === "en" ? "Send" : "Envoyer"
+  );
 
   // Setting success or failure messages states
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -68,7 +73,7 @@ const ContactPage: NextPage<{
     let isValidForm = handleValidation();
 
     if (isValidForm) {
-      setButtonText(i18n!.t("sending"));
+      setButtonText(locale === "en" ? "Sending..." : "Envoi en cours...");
       const res = await fetch("/api/form", {
         body: JSON.stringify({
           email: email,
@@ -87,12 +92,12 @@ const ContactPage: NextPage<{
         console.log(error);
         setShowSuccessMessage(false);
         setShowFailureMessage(true);
-        setButtonText(i18n!.t("send"));
+        setButtonText(locale === "en" ? "Send" : "Envoyer");
         return;
       }
       setShowSuccessMessage(true);
       setShowFailureMessage(false);
-      setButtonText(i18n!.t("send"));
+      setButtonText(locale === "en" ? "Send" : "Envoyer");
     }
     console.log(fullname, email, subject, message);
   };
