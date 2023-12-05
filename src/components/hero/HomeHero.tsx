@@ -26,9 +26,16 @@ const Hero = ({ summary, heroText, news, projects }: Props) => {
             <span className="text-logoGray dark:text-logoGray">LAB</span>
           </div>
 
-          <Fade cascade duration={35} triggerOnce={true}>
-            <h2 className="m-auto w-[80%]">{summary}</h2>
-          </Fade>
+          <h2 className="m-auto block w-[80%] lg:hidden lg:w-full">
+            {summary}
+          </h2>
+
+          <h2 className="hidden lg:block">
+            <Fade cascade duration={35} triggerOnce={true}>
+              {summary}
+            </Fade>
+          </h2>
+
           <div className="w-4/5 lg:w-1/2">
             <p>{heroText}</p>
           </div>
