@@ -62,13 +62,15 @@ const CourseCard = ({ item }: Props) => {
             {item.attributes.level && (
               <div className="grid grid-cols-3 ">
                 <span>{t("level")}:</span>
-                <span>{levelTranslation[locale][item.attributes.level]}</span>
+                <span className="col-span-2">
+                  {levelTranslation[locale][item.attributes.level]}
+                </span>
               </div>
             )}
             {item.attributes.semesters && (
               <div className="grid grid-cols-3">
                 <span>{t("semester")}:</span>
-                <span>
+                <span className="col-span-2">
                   {item.attributes.semesters.map((semesterInfo, i) => {
                     const parts = semesterInfo.split(" ");
                     const semester = parts[0];
@@ -93,7 +95,7 @@ const CourseCard = ({ item }: Props) => {
             {item.attributes.university && (
               <div className="grid grid-cols-3 ">
                 <span>{t("university")}:</span>
-                <span>{item.attributes.university}</span>
+                <span className="col-span-2">{item.attributes.university}</span>
               </div>
             )}
 
@@ -101,7 +103,7 @@ const CourseCard = ({ item }: Props) => {
               <div className="grid grid-cols-3 ">
                 <span>{t("instructor")}:</span>
                 {item.attributes.instructors.data.map((item, i) => (
-                  <li key={i}>
+                  <li key={i} className="col-span-2">
                     <span>{item.attributes.name}</span>
                   </li>
                 ))}

@@ -17,8 +17,8 @@ const Hero = ({ summary, heroText, news, projects }: Props) => {
 
   return (
     <div className="layout py-12 lg:py-24">
-      <Fade triggerOnce={true} fraction={0.5} cascade damping={0.4}>
-        <div className="relative flex flex-col items-center justify-center space-y-6 text-center ">
+      <Fade triggerOnce={true} fraction={0.2} cascade damping={0.4}>
+        <div className="relative flex flex-col items-center justify-center space-y-6 text-center">
           <div className="font-sec text-6xl font-semibold lg:text-8xl">
             <span className="text-neutral-900 underline decoration-orange">
               SIP
@@ -26,12 +26,10 @@ const Hero = ({ summary, heroText, news, projects }: Props) => {
             <span className="text-logoGray dark:text-logoGray">LAB</span>
           </div>
 
-          <h2>
-            <Fade cascade duration={35} triggerOnce={true}>
-              {summary}
-            </Fade>
-          </h2>
-          <div className="w-4/5 pt-3 lg:w-1/2">
+          <Fade cascade duration={35} triggerOnce={true}>
+            <h2 className="m-auto w-[80%]">{summary}</h2>
+          </Fade>
+          <div className="w-4/5 lg:w-1/2">
             <p>{heroText}</p>
           </div>
           <div>
