@@ -2,7 +2,7 @@ import { CourseTypes } from "@/types/ResponsesInterface";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
+import MarkdownParser from "@/utils/markdownParser";
 import React from "react";
 
 interface Props {
@@ -55,7 +55,7 @@ const CourseCard = ({ item }: Props) => {
 
         <div className="col-span-2 flex flex-col space-y-6">
           <div className="markdownTextSm break-words">
-            <ReactMarkdown>{item.attributes.content}</ReactMarkdown>
+            <MarkdownParser markdown={item.attributes.content} />
           </div>
 
           <div className="w-full text-sm ">

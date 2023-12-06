@@ -141,7 +141,7 @@ const TeamCard = ({ item, index }: Props) => {
                 <h3 className="duration-300 group-hover:text-orange">
                   Publications
                 </h3>
-                <div className="text-xs lg:text-sm">
+                <div className="">
                   {publicationsSorted.map((group, groupIndex) => {
                     const type =
                       group.type.charAt(0).toUpperCase() + group.type.slice(1);

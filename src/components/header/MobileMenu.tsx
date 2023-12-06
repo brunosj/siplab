@@ -100,14 +100,14 @@ const MobileMenu = () => {
           <div className="flex h-full flex-col justify-center space-y-6 px-12">
             <div className="">
               {menu.slice(0, -1).map((item, i) => {
-                const isExternal = item.path.slice(0, 4) === "http";
-
                 return (
                   <Link
                     key={i}
                     href={item.path}
-                    rel={isExternal ? "noopener noreferrer" : ""}
-                    target={isExternal ? "_blank" : ""}
+                    rel={
+                      item.path.includes("http") ? "noopener noreferrer" : ""
+                    }
+                    target={item.path.includes("http") ? "_blank" : "_self"}
                     className="textHover block px-4 py-2 text-xl "
                     onClick={() => setIsOpen(false)}
                   >

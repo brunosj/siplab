@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@/components/Layout";
-import ReactMarkdown from "react-markdown";
+import MarkdownParser from "@/utils/markdownParser";
 import { useTranslation } from "next-i18next";
 import { formatDate, formatPublicationType } from "@/utils/utils";
 import { PublicationTypes } from "@/types/ResponsesInterface";
@@ -92,7 +92,7 @@ const Publication: NextPage<PublicationPage> = ({
             </h2> */}
 
           {currentContent.attributes.abstract && (
-            <ReactMarkdown>{currentContent.attributes.abstract}</ReactMarkdown>
+            <MarkdownParser markdown={currentContent.attributes.abstract} />
           )}
         </div>
       </section>

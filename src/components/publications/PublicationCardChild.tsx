@@ -2,6 +2,7 @@ import { PublicationTypes } from "@/types/ResponsesInterface";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { formatDate, formatPublicationType } from "@/utils/utils";
+import MarkdownParser from "@/utils/markdownParser";
 
 interface Props {
   item: PublicationTypes;
@@ -40,7 +41,9 @@ const PublicationCardChild = ({ item }: Props) => {
           )}
         </div>
         {item.attributes.abstract && (
-          <p className="text-sm">{item.attributes.abstract}</p>
+          <div className="markdownTextSmDesktop break-words">
+            <MarkdownParser markdown={item.attributes.abstract} />
+          </div>
         )}
         <div>
           {authors.map((author, i) => (

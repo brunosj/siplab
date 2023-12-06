@@ -4,7 +4,7 @@ import ProjectDocumentCard from "./ProjectDocumentCard";
 import Image from "next/image";
 import { CMS_URL } from "src/lib/constants";
 import { useTranslation } from "next-i18next";
-import ReactMarkdown from "react-markdown";
+import MarkdownParser from "@/utils/markdownParser";
 import { removeAccentsAndSpaces } from "@/utils/utils";
 import { useRouter } from "next/router";
 
@@ -22,7 +22,7 @@ const ProjectDetails: React.FC<{
       <h2 className="">{project.attributes.title}</h2>
       <div className="space-y-3">
         <div className="markdownTextSm break-words">
-          <ReactMarkdown>{project.attributes.content}</ReactMarkdown>
+          <MarkdownParser markdown={project.attributes.content} />
         </div>
         {/* <p className="">{project.attributes.summary}</p> */}
         {project.attributes.funding && (
@@ -53,11 +53,13 @@ const ProjectDetails: React.FC<{
           ) : (
             <h3>Publication</h3>
           )}
-          {project.attributes.publications.data.map((publication) => (
-            <li key={publication.id} className="list-none">
-              <PublicationCard item={publication} />
-            </li>
-          ))}
+          {project.attributes.publications.data
+            .sort((a, b) => (a.attributes.date > b.attributes.date ? -1 : 1))
+            .map((publication) => (
+              <li key={publication.id} className="list-none">
+                <PublicationCard item={publication} />
+              </li>
+            ))}
         </div>
       )}
       {project.attributes.image?.data && (

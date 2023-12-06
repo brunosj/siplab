@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { CMS_URL } from "src/lib/constants";
 import LinkUnderline from "../ui/LinkUnderline";
-import ReactMarkdown from "react-markdown";
+import MarkdownParser from "@/utils/markdownParser";
 
 interface Props {
   item: NewsTypes;
@@ -49,7 +49,7 @@ const NewsCard = ({ item }: Props) => {
 
         {item.attributes.content && (
           <div className="markdownTextSm">
-            <ReactMarkdown>{item.attributes.content}</ReactMarkdown>
+            <MarkdownParser markdown={item.attributes.content} />
           </div>
         )}
         {item.attributes.link && (

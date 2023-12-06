@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import { HomepageTypes } from "src/types/ResponsesInterface";
 import PageHeaderTitle from "@/components/PageHeaderTitle";
-
+import MarkdownParser from "@/utils/markdownParser";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Layout from "@/components/Layout";
 import { Seo } from "@/components/SEO";
-import ReactMarkdown from "react-markdown";
+
 const Privacy: NextPage<{
   page: HomepageTypes;
 }> = ({ page }) => {
@@ -22,7 +22,7 @@ const Privacy: NextPage<{
         />
         <section className="bg-sec">
           <div className="layout sectionPy markdown m-auto lg:max-w-[80%] ">
-            <ReactMarkdown>{page.attributes.content}</ReactMarkdown>
+            <MarkdownParser markdown={page.attributes.content} />
           </div>
         </section>
       </Layout>
