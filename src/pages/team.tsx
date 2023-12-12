@@ -12,9 +12,12 @@ const TeamPage: NextPage<{
 }> = ({ pages, team }) => {
   const [page] = pages.filter((page) => page.attributes.slug === "team");
 
-  const teamSorted = team.sort((a, b) =>
-    a.attributes.position > b.attributes.position ? 1 : -1
+  const lead = team.filter(
+    (member) => member.attributes.name === "Marianne Quirouette"
   );
+  const labMembers = team
+    .filter((member) => member.attributes.name !== "Marianne Quirouette")
+    .sort((a, b) => a.attributes.name.localeCompare(b.attributes.name));
 
   return (
     <Layout>
@@ -29,7 +32,10 @@ const TeamPage: NextPage<{
 
       {team.length > 0 && (
         <ul>
-          {teamSorted.map((item, index) => (
+          <li className="list-none">
+            <TeamCard item={lead[0]} index={1} />
+          </li>
+          {labMembers.map((item, index) => (
             <li key={index} className="list-none">
               <TeamCard item={item} index={index} />
             </li>

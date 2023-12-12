@@ -78,7 +78,7 @@ export interface PageTypes {
 
 export interface TeamTypes {
   attributes: {
-    name: number;
+    name: string;
     position: string;
     pronouns: string;
     bio: string;

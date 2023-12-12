@@ -23,7 +23,7 @@ const TeamCard = ({ item, index }: Props) => {
   let locale = router.locale ?? "en";
 
   const cardBg =
-    index % 2 === 0 ? "bg-sec dark:bg-pri-darker" : "bg-pri dark:bg-pri-dark";
+    index % 2 === 0 ? "bg-pri dark:bg-pri-dark" : "bg-sec dark:bg-pri-darker";
 
   // Combine and sort publications
   const allPublications: PublicationTypes[] = [
@@ -86,7 +86,7 @@ const TeamCard = ({ item, index }: Props) => {
             <h2 className="lg:leading-none">{item.attributes.name}</h2>
             <h4 className="font-light">{`(${item.attributes.pronouns})`}</h4>
           </div>
-          <h3>{item.attributes.position.slice(4)}</h3>
+          <h3>{item.attributes.position}</h3>
         </div>
 
         <div className="sectionPt grid-cols-3 lg:grid">
