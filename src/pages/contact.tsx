@@ -97,7 +97,7 @@ const ContactPage: NextPage<{
       }
       setShowSuccessMessage(true);
       setShowFailureMessage(false);
-      setButtonText(locale === "en" ? "Send" : "Envoyer");
+      setButtonText(locale === "en" ? "Sent" : "Envoyé");
     }
     console.log(fullname, email, subject, message);
   };
@@ -241,27 +241,27 @@ const ContactPage: NextPage<{
                           onChange={(e) => {
                             setMessage(e.target.value);
                           }}
-                          className="border-warm-gray-300  focus:border-mblue-500 focus:ring-mblue-500 block w-full rounded-md px-4 py-3 shadow-sm"
+                          className="border-warm-gray-300  block w-full rounded-md px-4 py-3 shadow-sm"
                           aria-describedby="message-max"
                         />
                       </div>
                     </div>
-                    <div className="sm:col-span-2 sm:flex sm:justify-end">
+                    <div className="items-center space-x-6 sm:col-span-2 sm:flex sm:justify-end lg:space-x-12">
+                      <div className="text-left">
+                        {showSuccessMessage && (
+                          <h3 className="font-semibold text-orange dark:text-orange">
+                            {t("messageSuccess")}
+                          </h3>
+                        )}
+                        {showFailureMessage && (
+                          <h3 className="font-semibold text-orange dark:text-orange">
+                            {t("messageFailure")}
+                          </h3>
+                        )}
+                      </div>
                       <UIButton type="submit" aria-label="submit">
                         {buttonText}
                       </UIButton>
-                    </div>
-                    <div className="text-left">
-                      {showSuccessMessage && (
-                        <p className="text-mblue-700 dark:text-mblue-500 my-2 text-sm font-semibold">
-                          {t("messageSuccess")}
-                        </p>
-                      )}
-                      {showFailureMessage && (
-                        <p className="text-morange-700 dark:text-morange-500">
-                          {t("messageFailure")}
-                        </p>
-                      )}
                     </div>
                   </form>
                 </div>
