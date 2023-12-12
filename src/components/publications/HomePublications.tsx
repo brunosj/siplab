@@ -28,8 +28,11 @@ const HomePublications = ({ items }: Props) => {
         <h2>{t("latestPublications")}</h2>
         <ul className="padTop12 grid-cols-3 gap-12 lg:grid ">
           {latestPublications.map((item, i) => (
-            <Link href={`publications/${item.attributes.slug}`} key={i}>
-              <li className="group relative mb-6 flex h-full list-none flex-col justify-between rounded-t-md border-b-4 border-b-orange bg-neutral-100 duration-300 hover:bg-pri dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700 lg:mb-0">
+            <li
+              className="group relative mb-6 flex h-full list-none flex-col justify-between rounded-t-md border-b-4 border-b-orange bg-neutral-100 duration-300 hover:bg-pri dark:bg-pri-dark dark:text-white dark:hover:bg-neutral-700 lg:mb-0"
+              key={i}
+            >
+              <Link href={`publications/${item.attributes.slug}`}>
                 {/* <div className='relative h-32 w-full lg:h-48'>
               {item.attributes.image?.data && (
                 <Image
@@ -64,15 +67,15 @@ const HomePublications = ({ items }: Props) => {
 
                   <span>{formatDate(item.attributes.date, locale)}</span>
                 </div>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
-        <div className="padTop12 flex justify-end">
+        <li className="padTop12 flex justify-end">
           <LinkUnderline path="/publications">
             {t("allPublications")}
           </LinkUnderline>
-        </div>
+        </li>
       </Fade>
     </section>
   );

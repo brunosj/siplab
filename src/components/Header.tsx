@@ -45,6 +45,7 @@ const Header = () => {
                   className={`textHover ${
                     locale === "en" ? "underline underline-offset-2" : ""
                   }`}
+                  aria-label="change language to english"
                 >
                   EN
                 </span>{" "}
@@ -53,6 +54,7 @@ const Header = () => {
                   className={`textHover ${
                     locale === "fr" ? "underline underline-offset-2" : ""
                   }`}
+                  aria-label="change language to french"
                 >
                   FR
                 </span>
