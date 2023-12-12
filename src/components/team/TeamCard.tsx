@@ -86,7 +86,7 @@ const TeamCard = ({ item, index }: Props) => {
             <h2 className="lg:leading-none">{item.attributes.name}</h2>
             <h4 className="font-light">{`(${item.attributes.pronouns})`}</h4>
           </div>
-          <h3>{item.attributes.position}</h3>
+          {item.attributes.position && <h3>{item.attributes.position}</h3>}
         </div>
 
         <div className="sectionPt grid-cols-3 lg:grid">
