@@ -17,7 +17,14 @@ const PublicationFilter: React.FC<PublicationFilterProps> = ({
   const [selectedType, setSelectedType] = useState<string[]>([]);
 
   const types = useMemo(
-    () => Array.from(new Set(publications.map((pub) => pub.attributes.type))),
+    () =>
+      Array.from(
+        new Set(
+          publications
+            .map((pub) => pub.attributes.type)
+            .sort((a, b) => a.localeCompare(b))
+        )
+      ),
     [publications]
   );
 

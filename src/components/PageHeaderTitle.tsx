@@ -14,9 +14,12 @@ const PageHeaderTitle = ({ title, description }: PageHeaderTitle) => {
           <div className="layout font-sec text-3xl  text-orange lg:text-6xl">
             {title}
           </div>
-          <div className="layout textPri mt-3 font-sec  text-lg lg:mt-6 lg:text-2xl">
-            {description}
-          </div>
+
+          {description && (
+            <div className="layout textPri mt-3 font-sec  text-lg lg:mt-6 lg:text-2xl">
+              {description}
+            </div>
+          )}
         </Fade>
       </Slide>
     </section>

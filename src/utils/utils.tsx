@@ -36,10 +36,10 @@ export function formatPublicationType(type: string, locale: string) {
         return "Academic Article";
       case "conferences":
         return "Conference";
-      case "reports":
-        return "Report";
-      case "under review":
-        return "Under Review";
+      // case "reports":
+      //   return "Report";
+      case "reports and other materials":
+        return "Report and Other Material";
       default:
         return "Other";
     }
@@ -49,10 +49,10 @@ export function formatPublicationType(type: string, locale: string) {
         return "Article académique";
       case "conferences":
         return "Conférence";
-      case "reports":
-        return "Rapport";
-      case "under review":
-        return "En cours de révision";
+      // case "reports":
+      //   return "Rapport";
+      case "reports and other materials":
+        return "Rapport et autre document";
       default:
         return "Autre";
     }
