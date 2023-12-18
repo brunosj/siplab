@@ -25,7 +25,7 @@ const HeroListing = ({ heading, contentType, items }: Props) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
+      setIsDesktop(window.innerWidth >= 851);
     };
     handleResize();
     window.addEventListener("resize", handleResize);

@@ -90,7 +90,7 @@ const ResearchPage: NextPage<{
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
+      setIsDesktop(window.innerWidth >= 851);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
