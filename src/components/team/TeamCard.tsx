@@ -84,7 +84,6 @@ const TeamCard = ({ item, index, reverse }: Props) => {
     ? allPublications.length
     : 5;
 
-  console.log(item.attributes.name, index);
   return (
     <Fade triggerOnce={true} fraction={0.1}>
       <section className={`layout sectionPy group ${cardBg}`}>
