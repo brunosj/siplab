@@ -4,14 +4,23 @@ import { Fade, Slide } from "react-awesome-reveal";
 interface PageHeaderTitle extends Props {
   description?: string;
   title: string;
+  textColor?: string;
+  paddingTop?: string;
+  bgColor?: string;
 }
 
-const PageHeaderTitle = ({ title, description }: PageHeaderTitle) => {
+const PageHeaderTitle = ({
+  title,
+  description,
+  textColor = "text-orange",
+  paddingTop = "py-12 lg:py-36",
+  bgColor = "bg-pri dark:bg-pri-dark",
+}: PageHeaderTitle) => {
   return (
-    <section className="py-12 lg:py-36">
+    <section className={`${paddingTop} ${bgColor}`}>
       <Slide direction="up" triggerOnce={true} duration={500}>
         <Fade triggerOnce={true} cascade damping={0.1}>
-          <div className="layout font-sec text-3xl  text-orange lg:text-6xl">
+          <div className={`layout font-sec text-3xl  ${textColor} lg:text-6xl`}>
             {title}
           </div>
 

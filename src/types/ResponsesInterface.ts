@@ -79,6 +79,7 @@ export interface PageTypes {
 export interface TeamTypes {
   attributes: {
     name: string;
+    status: "Team member" | "Alumnus";
     position: string;
     pronouns: string;
     bio: string;

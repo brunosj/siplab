@@ -15,15 +15,21 @@ import { Fade } from "react-awesome-reveal";
 interface Props {
   item: TeamTypes;
   index: number;
+  reverse?: boolean;
 }
 
-const TeamCard = ({ item, index }: Props) => {
+const TeamCard = ({ item, index, reverse }: Props) => {
   const { t } = useTranslation();
   const router = useRouter();
   let locale = router.locale ?? "en";
 
-  const cardBg =
-    index % 2 === 0 ? "bg-pri dark:bg-pri-dark" : "bg-sec dark:bg-pri-darker";
+  const cardBg = reverse
+    ? index % 2 !== 0
+      ? "bg-pri dark:bg-pri-dark"
+      : "bg-sec dark:bg-pri-darker"
+    : index % 2 === 0
+    ? "bg-pri dark:bg-pri-dark"
+    : "bg-sec dark:bg-pri-darker";
 
   // Combine and sort publications
   const allPublications: PublicationTypes[] = [
@@ -78,6 +84,7 @@ const TeamCard = ({ item, index }: Props) => {
     ? allPublications.length
     : 5;
 
+  console.log(item.attributes.name, index);
   return (
     <Fade triggerOnce={true} fraction={0.1}>
       <section className={`layout sectionPy group ${cardBg}`}>

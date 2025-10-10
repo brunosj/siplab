@@ -19,6 +19,21 @@ const TeamPage: NextPage<{
     .filter((member) => member.attributes.name !== "Marianne Quirouette")
     .sort((a, b) => a.attributes.name.localeCompare(b.attributes.name));
 
+  const teamMembers = team.filter(
+    (member) => member.attributes.status === "Team member"
+  );
+  const alumni = team.filter(
+    (member) => member.attributes.status === "Alumnus"
+  );
+
+  const lastTeamMemberIndex = teamMembers.length - 1;
+
+  // Set PageHeaderTitle background based on the last team member
+  const headerColor =
+    lastTeamMemberIndex % 2 === 0
+      ? "bg-sec dark:bg-pri-darker"
+      : "bg-pri dark:bg-pri-dark";
+
   return (
     <Layout>
       <Seo
@@ -30,7 +45,7 @@ const TeamPage: NextPage<{
         description={page.attributes.summary}
       />
 
-      {team.length > 0 && (
+      {teamMembers.length > 0 && (
         <ul>
           <li className="list-none">
             <TeamCard item={lead[0]} index={1} />
@@ -41,6 +56,29 @@ const TeamPage: NextPage<{
             </li>
           ))}
         </ul>
+      )}
+      {alumni.length > 0 && (
+        <>
+          <PageHeaderTitle
+            title={"Alumni"}
+            description={""}
+            textColor="text-black"
+            bgColor={headerColor}
+            paddingTop="py-12"
+          />
+          {alumni.length > 0 && (
+            <ul>
+              {alumni.map((item, index) => (
+                <li
+                  key={index}
+                  className={`list-none ${index === 0 ? headerColor : ""}`}
+                >
+                  <TeamCard item={item} index={index} reverse={true} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </>
       )}
     </Layout>
   );
