@@ -43,7 +43,7 @@ const Hero = ({ summary, heroText, news, projects }: Props) => {
             <LinkUnderline path="/team">{t("meetTeam")}</LinkUnderline>
           </div>
         </div>
-        <div className="justify-between gap-16 pt-12 lg:flex lg:pt-0">
+        <div className="justify-between gap-16 pt-12 lg:flex lg:pt-12">
           <HeroListing heading={t("labNews")} items={news} contentType="News" />
           <HeroListing
             heading={t("researchProjects")}

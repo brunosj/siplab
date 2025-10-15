@@ -12,19 +12,21 @@ const TeamPage: NextPage<{
 }> = ({ pages, team }) => {
   const [page] = pages.filter((page) => page.attributes.slug === "team");
 
-  const lead = team.filter(
-    (member) => member.attributes.name === "Marianne Quirouette"
-  );
-  const labMembers = team
-    .filter((member) => member.attributes.name !== "Marianne Quirouette")
-    .sort((a, b) => a.attributes.name.localeCompare(b.attributes.name));
-
+  // Split team into current members and alumni
   const teamMembers = team.filter(
     (member) => member.attributes.status === "Team member"
   );
-  const alumni = team.filter(
-    (member) => member.attributes.status === "Alumnus"
+  const alumni = team
+    .filter((member) => member.attributes.status === "Alum")
+    .sort((a, b) => a.attributes.name.localeCompare(b.attributes.name));
+
+  // Separate lead from other lab members
+  const lead = teamMembers.filter(
+    (member) => member.attributes.name === "Marianne Quirouette"
   );
+  const labMembers = teamMembers
+    .filter((member) => member.attributes.name !== "Marianne Quirouette")
+    .sort((a, b) => a.attributes.name.localeCompare(b.attributes.name));
 
   const lastTeamMemberIndex = teamMembers.length - 1;
 
