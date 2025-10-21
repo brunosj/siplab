@@ -77,10 +77,7 @@ const Publication: NextPage<PublicationPage> = ({
             )}
 
             {currentContent.attributes.link && (
-              <Link
-                href={`${CMS_URL}${currentContent.attributes.link}`}
-                target="_blank"
-              >
+              <Link href={`${currentContent.attributes.link}`} target="_blank">
                 <LinkIcon className="h-6 w-6 shrink-0 duration-300 hover:text-orange lg:h-8 lg:w-8" />
               </Link>
             )}
